@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">网易云音乐</string>
+    <string name="login_by_email">网易邮箱登录</string>
+    <string name="login_by_phone">手机号登录</string>
+    <string name="privacy_and_agreement">同意《用户协议》《隐私政策》《儿童隐私政策》</string>
+
+    <string name="permission_explain">权限说明</string>
+
+    <string name="storage_permission_explain">云音乐需要获取存储空间的权限，以保证歌曲正常播放下载</string>
+
+    <string name="reject">拒绝</string>
+    <string name="authorization">授权</string>
 </resources>

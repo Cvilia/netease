@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_main"
+    tools:context=".pages.LauncherActivity">
+
+    <ImageView
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="150dp"
+        android:src="@mipmap/app_icon"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/loginByEmailTv"
+        style="@style/LoginTextView"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/login_by_email"
+        android:text="@string/login_by_email"
+        android:textColor="@color/app_main"
+        app:layout_constraintBottom_toTopOf="@id/loginByPhoneTv"
+        app:layout_constraintLeft_toLeftOf="@id/loginByPhoneTv"
+        app:layout_constraintRight_toRightOf="@id/loginByPhoneTv" />
+
+    <TextView
+        android:id="@+id/loginByPhoneTv"
+        style="@style/LoginTextView"
+        android:layout_marginBottom="120dp"
+        android:background="@drawable/login_by_phone"
+        android:text="@string/login_by_phone"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <LinearLayout
+        android:id="@+id/privacyLl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <com.cvilia.netease.view.PrivacyCheckboxView
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:padding="8dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="10sp"
+            android:layout_marginLeft="5dp"
+            android:textColor="@color/alpha_ccffffff"
+            android:text="@string/privacy_and_agreement"
+            />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

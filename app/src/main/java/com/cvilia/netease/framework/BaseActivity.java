@@ -9,6 +9,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.cvilia.netease.manager.ActivityManager;
 import com.jaeger.library.StatusBarUtil;
 
 import org.greenrobot.eventbus.EventBus;
@@ -25,16 +26,12 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
     protected T mPresenter;
     protected Activity mContext;
 
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView();
         ARouter.getInstance().inject(this);
-
-//        int layoutId = getLayoutId();
-//        if (layoutId != 0) {
-//            setContentView(layoutId);
-//        }
+        ActivityManager.getInstance().addActivity(this);
         mPresenter = getPresenter();
         if (mPresenter != null) {
             mPresenter.attachView(this);
@@ -43,19 +40,10 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
         if (registerEventBus() && !EventBus.getDefault().isRegistered(this)) {
             EventBus.getDefault().register(this);
         }
-//        findViewById();
-//        initWidgetEvent();
         onViewCreated();
         initData();
     }
 
-    public Intent getIntent() {
-        return getIntent();
-    }
-
-//    protected abstract void findViewById();
-
-//    protected abstract void initWidgetEvent();
 
     protected void onViewCreated() {
         StatusBarUtil.setTransparent(mContext);
@@ -66,9 +54,9 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
 
     protected abstract void initData();
 
-//    protected abstract int getLayoutId();
-
     protected abstract T getPresenter();
+
+    protected abstract void setContentView();
 
 
     private boolean registerEventBus() {
@@ -81,6 +69,7 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
         if (mPresenter != null) {
             mPresenter.detachView();
         }
+        ActivityManager.getInstance().removeActivity(this);
     }
 
     @Override
