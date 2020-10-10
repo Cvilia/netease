@@ -1,4 +1,4 @@
-package com.cvilia.netease.utils;
+package com.cvilia.netease.sp;
 
 import com.tencent.mmkv.MMKV;
 

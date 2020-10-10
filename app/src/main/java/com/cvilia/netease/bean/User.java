@@ -9,15 +9,14 @@ import java.util.List;
  */
 public class User {
 
-
     /**
      * account : {"anonimousUser":false,"ban":0,"baoyueVersion":0,"createTime":1452370506953,"donateVersion":0,"id":122121024,"salt":"[B@7c3e3a1e","status":0,"tokenVersion":1,"type":1,"userName":"1_18510909453","vipType":0,"viptypeVersion":0,"whitelistAuthority":0}
-     * bindings : [{"bindingTime":1551079487559,"expired":false,"expiresIn":2147483647,"id":6808660939,"refreshTime":1551079487,"tokenJsonStr":"","type":1,"url":"","userId":122121024}]
+     * bindings : [{"bindingTime":1551079487559,"expired":false,"expiresIn":2147483647,"id":6808660939,"refreshTime":1551079487,"tokenJsonStr":"e}","type":1,"url":"","userId":122121024},{"bindingTime":1602301092614,"expired":true,"expiresIn":7200,"id":11117149469,"refreshTime":1602301092,"tokenJsonStr":"","type":10,"url":"","userId":122121024}]
      * code : 200
-     * cookie :
+     * cookie : MUSIC
      * loginType : 0
-     * profile : {"accountStatus":0,"authStatus":0,"authority":0,"avatarImgId":18675205000105076,"avatarImgIdStr":"18675205000105075","avatarImgId_str":"18675205000105075","avatarUrl":"","backgroundImgId":2002210674180201,"backgroundImgIdStr":"2002210674180201","backgroundUrl":"","birthday":749404800000,"city":110101,"defaultAvatar":false,"description":"","detailDescription":"","djStatus":0,"eventCount":0,"expertTags":null,"experts":{},"followed":false,"followeds":0,"follows":5,"gender":0,"mutual":false,"nickname":"麻辣炖土豆儿","playlistBeSubscribedCount":0,"playlistCount":2,"province":110000,"remarkName":null,"signature":"","userId":122121024,"userType":0,"vipType":0}
-     * token : 256fe9cbf3f7ec84ad35d1743aa00409dab23e5584123907f10ac7fb79e87c870931c3a9fbfe3df2
+     * profile : {"accountStatus":0,"authStatus":0,"authority":0,"avatarImgId":109951165380951600,"avatarImgIdStr":"109951165380951600","avatarImgId_str":"109951165380951600","avatarUrl":"https://p3.music.126.net/Uod614kFPptcj661BPLsOg==/109951165380951600.jpg","backgroundImgId":2002210674180201,"backgroundImgIdStr":"2002210674180201","backgroundUrl":"https://p1.music.126.net/o3G7lWrGBQAvSRt3UuApTw==/2002210674180201.jpg","birthday":749404800000,"city":110101,"defaultAvatar":false,"description":"","detailDescription":"","djStatus":0,"eventCount":0,"expertTags":null,"experts":{},"followed":false,"followeds":0,"follows":5,"gender":2,"mutual":false,"nickname":"麻辣炖土豆儿","playlistBeSubscribedCount":0,"playlistCount":2,"province":110000,"remarkName":null,"signature":"爱音乐爱自己","userId":122121024,"userType":0,"vipType":0}
+     * token : 256fe9cbf3f7ec84ad35d1743aa004095e8978d6bd757cdd8ef8f10d9fb0b0ee0931c3a9fbfe3df2
      */
 
     private AccountBean account;
@@ -235,13 +234,13 @@ public class User {
          * accountStatus : 0
          * authStatus : 0
          * authority : 0
-         * avatarImgId : 18675205000105076
-         * avatarImgIdStr : 18675205000105075
-         * avatarImgId_str : 18675205000105075
-         * avatarUrl :
+         * avatarImgId : 109951165380951600
+         * avatarImgIdStr : 109951165380951600
+         * avatarImgId_str : 109951165380951600
+         * avatarUrl : https://p3.music.126.net/Uod614kFPptcj661BPLsOg==/109951165380951600.jpg
          * backgroundImgId : 2002210674180201
          * backgroundImgIdStr : 2002210674180201
-         * backgroundUrl :
+         * backgroundUrl : https://p1.music.126.net/o3G7lWrGBQAvSRt3UuApTw==/2002210674180201.jpg
          * birthday : 749404800000
          * city : 110101
          * defaultAvatar : false
@@ -254,14 +253,14 @@ public class User {
          * followed : false
          * followeds : 0
          * follows : 5
-         * gender : 0
+         * gender : 2 = 女 1 = 男 0 = 未知
          * mutual : false
          * nickname : 麻辣炖土豆儿
          * playlistBeSubscribedCount : 0
          * playlistCount : 2
          * province : 110000
          * remarkName : null
-         * signature :
+         * signature : 爱音乐爱自己
          * userId : 122121024
          * userType : 0
          * vipType : 0
@@ -576,7 +575,7 @@ public class User {
          * expiresIn : 2147483647
          * id : 6808660939
          * refreshTime : 1551079487
-         * tokenJsonStr :
+         * tokenJsonStr : e}
          * type : 1
          * url :
          * userId : 122121024
