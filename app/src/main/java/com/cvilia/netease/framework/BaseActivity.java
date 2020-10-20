@@ -1,13 +1,10 @@
 package com.cvilia.netease.framework;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.view.View;
 
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.alibaba.android.arouter.launcher.ARouter;
@@ -43,23 +40,23 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
             EventBus.getDefault().register(this);
         }
         onViewCreated();
+        initWidgetEvent();
         initData();
     }
 
 
     protected void onViewCreated() {
-        StatusBarUtil.setTransparent(mContext);
+        StatusBarUtil.setTranslucent(this);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             StatusBarUtil.setDarkMode(this);
         }
     }
 
+    protected abstract void setContentView();
+    protected abstract void initWidgetEvent();
     protected abstract void initData();
 
     protected abstract T getPresenter();
-
-    protected abstract void setContentView();
-
 
     private boolean registerEventBus() {
         return false;

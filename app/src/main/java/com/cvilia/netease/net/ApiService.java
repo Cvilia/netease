@@ -30,7 +30,7 @@ public interface ApiService {
      * @param password
      * @return
      */
-    @GET("/login")
-    Observable<User> loginByEmail(@Query("email") String phone,@Query("password") String password);
+    @GET("/login?")
+    Observable<User> loginByEmail(@Query("email") String phone,@Query("md5_password") String password);
 
 }

@@ -12,4 +12,8 @@
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
     <color name="alpha">#cc000000</color>
+
+    <color name="divider_dadada">#dadada</color>
+
+    <color name="hint_c1c1c1">#c1c1c1</color>
 </resources>

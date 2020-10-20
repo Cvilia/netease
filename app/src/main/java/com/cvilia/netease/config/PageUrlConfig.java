@@ -25,7 +25,4 @@ public class PageUrlConfig {
     public static final String MAIN_PAGE = MAIN + "/mainActivity";
     public static final String SELECT_CITY_PAGE = MAIN + "/selectCityPage";
 
-    public static final String PERMISSION_EXPLAIN_PAGE = SHOW_ONCE + "/permissionExplainActivity";
-
-
 }

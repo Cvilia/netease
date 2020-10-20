@@ -4,16 +4,22 @@ import android.content.Context;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.cvilia.netease.NeteaseApplication;
 import com.cvilia.netease.bean.User;
 
-import org.greenrobot.eventbus.Subscribe;
-import org.reactivestreams.Subscriber;
+import org.jetbrains.annotations.NotNull;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 import io.reactivex.rxjava3.core.Observable;
+import okhttp3.Cache;
+import okhttp3.CacheControl;
+import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
-import okhttp3.ResponseBody;
+import okhttp3.Request;
+import okhttp3.Response;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory;
@@ -31,71 +37,110 @@ public class RetrofitUtils {
     private static final int WAIT_TIME = 30;//读取时间
 
     private ApiService api;
-    private static Retrofit retrofit;
-    private OkHttpClient okHttpClient;
-    private static Context mContext;
+    private static OkHttpClient okHttpClient;
     private static RetrofitUtils instance;
-    private static final String baseUrl = ApiService.BASE_SERVER;
 
 
-    public static RetrofitUtils getInstance(Context context) {
-        if (context != null) {
-            mContext = context;
-        } else {
-            Log.e(TAG, "context is null,it can't be allow!!!!!!!!");
-        }
-        return Singleton.INSTANCE;
-    }
-
-    public static RetrofitUtils getInstance(Context context, String url) {
-        if (context != null) {
-            mContext = context;
-        } else {
-            Log.e(TAG, "context is null,it can't be allow!!!!!!!!");
-        }
-        if (instance == null) {
-            synchronized (RetrofitUtils.class) {
-                if (instance == null) {
-                    instance = new RetrofitUtils(context, url);
-                }
-            }
-        }
-        return instance;
-    }
-
-    private RetrofitUtils(Context context) {
-        this(context, null);
-    }
-
-    private RetrofitUtils(Context context, String url) {
-        if (TextUtils.isEmpty(baseUrl)) {
-            url = baseUrl;
-        }
-
-        okHttpClient = new OkHttpClient.Builder()
-                .addNetworkInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.HEADERS))
-                .connectTimeout(CONNECT_TIME, TimeUnit.SECONDS)
-                .readTimeout(WAIT_TIME, TimeUnit.SECONDS)
-                .build();
+    private RetrofitUtils(OkHttpClient okHttpClient) {
         Retrofit retrofit = new Retrofit.Builder()
-                .client(okHttpClient)
+                .baseUrl(ApiService.BASE_SERVER)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
-                .baseUrl(url)
+                .client(okHttpClient)
                 .build();
         api = retrofit.create(ApiService.class);
     }
 
-    private static class Singleton {
-        private static RetrofitUtils INSTANCE = new RetrofitUtils(mContext);
+    public static RetrofitUtils getInstance() {
+        if (instance == null) {
+            instance = new RetrofitUtils(initOkHttpClient());
+        }
+        return instance;
     }
+
+    private static OkHttpClient initOkHttpClient() {
+
+        okHttpClient = new OkHttpClient.Builder()
+                .connectTimeout(CONNECT_TIME, TimeUnit.SECONDS)
+                .readTimeout(WAIT_TIME, TimeUnit.SECONDS)
+                .writeTimeout(WAIT_TIME, TimeUnit.SECONDS)
+                .retryOnConnectionFailure(true)
+                .addInterceptor(loggingInterceptor)
+                .addInterceptor(headerInterceptor)
+                .cache(cache).addInterceptor(cacheInterceptor)
+                .build();
+        return okHttpClient;
+
+    }
+
+    /**
+     * 日志信息
+     */
+    static HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor(new HttpLoggingInterceptor.Logger() {
+        @Override
+        public void log(@NotNull String s) {
+            Log.e(TAG, "HttpLoggingInterceptor=" + s);
+        }
+    });
+
+    /**
+     * 设置头信息
+     */
+    static Interceptor headerInterceptor = chain -> {
+        Request originRequest = chain.request();
+        Request.Builder builder = originRequest.newBuilder()
+                .addHeader("Accept", "application/json")
+                .addHeader("Content-Type", "text/plain; charset=utf-8")
+                .method(originRequest.method(), originRequest.body());
+        Request request = builder.build();
+        return chain.proceed(request);
+    };
+
+
+    /**
+     * 设置缓存
+     */
+    public static final String CACHE_NAME = "retrofit_cache";
+    static File cacheFile = new File(NeteaseApplication.app.getExternalCacheDir(), CACHE_NAME);
+    static Cache cache = new Cache(cacheFile, 1024 * 1024 * 50);
+    static Interceptor cacheInterceptor = new Interceptor() {
+        @NotNull
+        @Override
+        public Response intercept(@NotNull Chain chain) throws IOException {
+            Request request = chain.request();
+            if (!NetWorkUtil.isNetworkConnected()) {
+                request = request.newBuilder()
+                        .cacheControl(CacheControl.FORCE_CACHE)
+                        .build();
+            }
+            Response response = chain.proceed(request);
+            if (!NetWorkUtil.isNetworkConnected()) {
+                int maxAge = 0;
+                // 有网络时 设置缓存超时时间0个小时
+                response.newBuilder()
+                        .header("Cache-Control", "public, max-age=" + maxAge)
+                        .removeHeader(CACHE_NAME)// 清除头信息，因为服务器如果不支持，会返回一些干扰信息，不清除下面无法生效
+                        .build();
+            } else {
+                // 无网络时，设置超时为4周
+                int maxStale = 60 * 60 * 24 * 28;
+                response.newBuilder()
+                        .header("Cache-Control", "public, only-if-cached, max-stale=" + maxStale)
+                        .removeHeader(CACHE_NAME)
+                        .build();
+            }
+            return response;
+
+        }
+    };
+
 
     public Observable<User> loginByPhone(String phone, String password) {
         return api.loginByPhone(phone, password);
     }
 
     public Observable<User> loginByEmail(String email, String password) {
-        return api.loginByPhone(email, password);
+        return api.loginByEmail(email, password);
     }
 
 }

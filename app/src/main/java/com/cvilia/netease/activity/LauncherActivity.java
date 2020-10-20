@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.Spanned;
+import android.text.TextUtils;
 import android.text.style.ClickableSpan;
 import android.text.style.ForegroundColorSpan;
 import android.view.View;
@@ -21,12 +22,21 @@ import com.alibaba.android.arouter.launcher.ARouter;
 import com.cvilia.netease.NeteaseApplication;
 import com.cvilia.netease.R;
 import com.cvilia.netease.component.PermissionDialog;
+import com.cvilia.netease.config.Constants;
 import com.cvilia.netease.config.PageUrlConfig;
 import com.cvilia.netease.databinding.ActivityLauncherBinding;
 import com.cvilia.netease.listener.IDialogClickListener;
+import com.cvilia.netease.sp.MMKVUtil;
 import com.cvilia.netease.utils.RxPermissionUtils;
+import com.jaeger.library.StatusBarUtil;
 import com.tbruyelle.rxpermissions3.Permission;
+import com.tencent.mmkv.MMKV;
 
+import java.util.concurrent.TimeUnit;
+
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
+import io.reactivex.rxjava3.core.Observable;
+import io.reactivex.rxjava3.schedulers.Schedulers;
 import me.jessyan.autosize.internal.CustomAdapt;
 
 public class LauncherActivity extends AppCompatActivity implements CustomAdapt, View.OnClickListener {
@@ -39,15 +49,22 @@ public class LauncherActivity extends AppCompatActivity implements CustomAdapt, 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView();
+        StatusBarUtil.setTransparent(this);
     }
 
     private void setContentView() {
         mViewBind = ActivityLauncherBinding.inflate(getLayoutInflater());
         setContentView(mViewBind.getRoot());
         ARouter.getInstance().inject(this);
-        privacySpannable();
-        mViewBind.loginByPhoneTv.setOnClickListener(this);
-        mViewBind.loginByEmailTv.setOnClickListener(this);
+        if (!TextUtils.isEmpty(MMKVUtil.getString(Constants.USER_TOKEN))) {
+            mViewBind.loginByEmailTv.setVisibility(View.GONE);
+            mViewBind.loginByPhoneTv.setVisibility(View.GONE);
+            mViewBind.privacyLl.setVisibility(View.GONE);
+        } else {
+            privacySpannable();
+            mViewBind.loginByPhoneTv.setOnClickListener(this);
+            mViewBind.loginByEmailTv.setOnClickListener(this);
+        }
         showPermissionDialog();
 
     }
@@ -96,6 +113,8 @@ public class LauncherActivity extends AppCompatActivity implements CustomAdapt, 
                 }
             });
             dialog.show();
+        } else {
+            enterMainPage();
         }
     }
 
@@ -107,7 +126,7 @@ public class LauncherActivity extends AppCompatActivity implements CustomAdapt, 
         RxPermissionUtils.requestPermissions(this, PERMISSIONS, new RxPermissionUtils.OnPermissionCallBack() {
             @Override
             public void onPermissionsGranted() {
-
+                enterMainPage();
             }
 
             @Override
@@ -127,16 +146,16 @@ public class LauncherActivity extends AppCompatActivity implements CustomAdapt, 
      * 开始进入主程序
      */
     private void enterMainPage() {
-//        //todo 检测是否有用户token，是否已经登录，而不是检测是否是第一次打开应用
-//        Observable.timer(3, TimeUnit.SECONDS).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(aLong -> {
-//            boolean isFirstStart = MMKVUtil.getBool(Constants.FIRST_START, true);
-//            ARouter.getInstance().build(isFirstStart ? PageUrlConfig.PERMISSION_EXPLAIN_PAGE : PageUrlConfig.MAIN_PAGE).navigation(this, new NavCallback() {
-//                @Override
-//                public void onArrival(Postcard postcard) {
-//                    finish();
-//                }
-//            });
-//        });
+        if (!TextUtils.isEmpty(MMKVUtil.getString(Constants.USER_TOKEN))) {
+            Observable.timer(3, TimeUnit.SECONDS).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(aLong -> {
+                ARouter.getInstance().build(PageUrlConfig.MAIN_PAGE).navigation(this, new NavCallback() {
+                    @Override
+                    public void onArrival(Postcard postcard) {
+                        finish();
+                    }
+                });
+            });
+        }
     }
 
     @Override
@@ -162,7 +181,12 @@ public class LauncherActivity extends AppCompatActivity implements CustomAdapt, 
             if (v.getId() == R.id.loginByEmailTv) {
                 loginType = 2;
             }
-            ARouter.getInstance().build(PageUrlConfig.LOGIN_PAGE).withInt("loginType", loginType).navigation();
+            ARouter.getInstance().build(PageUrlConfig.LOGIN_PAGE).withInt("loginType", loginType).navigation(this, new NavCallback() {
+                @Override
+                public void onArrival(Postcard postcard) {
+                    finish();
+                }
+            });
         }
     }
 

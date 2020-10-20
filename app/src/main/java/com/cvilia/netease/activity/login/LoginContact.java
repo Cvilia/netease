@@ -12,7 +12,9 @@ import com.cvilia.netease.framework.IView;
 public class LoginContact {
 
     interface Presenter extends IPresenter<View> {
-        void loginByEmail();
+        void loginByEmail(String email, String password);
+
+        void loginByPhone(String phone, String password);
     }
 
     interface View extends IView {
