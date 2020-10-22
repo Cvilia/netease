@@ -1,5 +1,6 @@
 package com.cvilia.netease.fragment;
 
+import android.util.Log;
 import android.view.View;
 
 import com.cvilia.netease.databinding.FragmentVideoFragmentBinding;
@@ -18,6 +19,7 @@ public class VideoFragment extends BaseFragment {
     @Override
     protected void onViewCreated() {
 
+        Log.e("fragment","视频");
     }
 
     @Override

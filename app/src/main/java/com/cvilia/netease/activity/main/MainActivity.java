@@ -74,6 +74,8 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
             TextView textView = tab.getCustomView().findViewById(R.id.tabTv);
             textView.setText(tabs[i]);
         }
+
+        mViewBind.viewPager.setCurrentItem(0);
         mViewBind.tabLayout.addOnTabSelectedListener(this);
     }
 
