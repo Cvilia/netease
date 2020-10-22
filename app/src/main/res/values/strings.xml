@@ -17,4 +17,9 @@
 
     <string name="reject">拒绝</string>
     <string name="authorization">授权</string>
+
+    <string name="my">我的</string>
+    <string name="discover">发现</string>
+    <string name="cloud">云村</string>
+    <string name="video">视频</string>
 </resources>

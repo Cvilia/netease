@@ -1,6 +1,7 @@
 package com.cvilia.netease.activity.main;
 
 import android.os.Bundle;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
@@ -28,7 +29,8 @@ import java.util.List;
 import java.util.Objects;
 
 @Route(path = PageUrlConfig.MAIN_PAGE)
-public class MainActivity extends BaseActivity<MainPresenter> implements MainContact.View , ViewPager.OnPageChangeListener {
+public class MainActivity extends BaseActivity<MainPresenter> implements MainContact.View, ViewPager.OnPageChangeListener,
+        TabLayout.OnTabSelectedListener {
 
     private ActivityMainBinding mViewBind;
     private List<Fragment> mFragments;
@@ -59,17 +61,20 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
         mFragments.add(new DiscoverFragment());
         mFragments.add(new CloudFragment());
         mFragments.add(new VideoFragment());
-        mAdapter = new ViewPagerAdapter(mFragments, getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
+        mAdapter = new ViewPagerAdapter(mFragments, getSupportFragmentManager(),
+                FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         mViewBind.viewPager.setAdapter(mAdapter);
-        for (int i = 0;i<4;i++){
-            TabLayout.Tab tab = mViewBind.tabLayout.newTab();
-            View view = LayoutInflater.from(getApplicationContext()).inflate(R.layout.tab_item, null);
-            TextView textView = view.findViewById(R.id.tabTv);
-            textView.setText(tabs[i]);
-            tab.setCustomView(view);
-            mViewBind.tabLayout.addTab(tab);
-        }
         mViewBind.tabLayout.setupWithViewPager(mViewBind.viewPager);
+        for (int i = 0; i < 4; i++) {
+            TabLayout.Tab tab = mViewBind.tabLayout.getTabAt(i);
+            tab.setCustomView(R.layout.tab_item);
+            if (i == 0) {
+                tab.getCustomView().findViewById(R.id.tabTv).setSelected(true);
+            }
+            TextView textView = tab.getCustomView().findViewById(R.id.tabTv);
+            textView.setText(tabs[i]);
+        }
+        mViewBind.tabLayout.addOnTabSelectedListener(this);
     }
 
     @Override
@@ -112,5 +117,27 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
     public void onPageScrollStateChanged(int state) {
 
     }
-    /*******************************************OnPageChangeListener********************************/
+
+    /*******************************************OnTabSelectedListener********************************/
+
+    @Override
+    public void onTabSelected(TabLayout.Tab tab) {
+        TextView textView =  Objects.requireNonNull(tab.getCustomView()).findViewById(R.id.tabTv);
+        textView.setSelected(true);
+        textView.getPaint().setFakeBoldText(true);
+        mViewBind.viewPager.setCurrentItem(tab.getPosition());
+    }
+
+    @Override
+    public void onTabUnselected(TabLayout.Tab tab) {
+        TextView textView =  Objects.requireNonNull(tab.getCustomView()).findViewById(R.id.tabTv);
+        textView.setSelected(false);
+        textView.getPaint().setFakeBoldText(false);
+    }
+
+    @Override
+    public void onTabReselected(TabLayout.Tab tab) {
+        //todo 重复点击tab理论上是刷新页面，使用eventbus发送点击刷新事件
+    }
+    /*******************************************OnTabSelectedListener********************************/
 }

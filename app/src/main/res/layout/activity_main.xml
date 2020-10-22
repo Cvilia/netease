@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/bg_f8f8f8"
     android:orientation="vertical"
     android:paddingTop="10dp"
     tools:context=".activity.main.MainActivity">
@@ -33,7 +33,8 @@
             app:layout_constraintStart_toEndOf="@id/moreIv"
             app:layout_constraintTop_toTopOf="@id/moreIv"
             app:tabTextColor="@color/text_1d1d1d"
-            app:tabSelectedTextColor="@color/black"/>
+            app:tabSelectedTextColor="@color/black"
+            app:tabIndicator="@null"/>
 
         <ImageView
             android:id="@+id/searchIv"
