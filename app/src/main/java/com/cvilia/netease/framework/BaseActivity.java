@@ -3,11 +3,14 @@ package com.cvilia.netease.framework;
 import android.app.Activity;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
+import android.view.Window;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.cvilia.netease.R;
 import com.cvilia.netease.manager.ActivityManager;
 import com.jaeger.library.StatusBarUtil;
 
@@ -29,6 +32,7 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView();
+        StatusBarUtil.setLightMode(this);
         ARouter.getInstance().inject(this);
         ActivityManager.getInstance().addActivity(this);
         mPresenter = getPresenter();
@@ -47,13 +51,28 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
 
     protected void onViewCreated() {
         StatusBarUtil.setTranslucent(this);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            StatusBarUtil.setDarkMode(this);
-        }
+
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+//            StatusBarUtil.setDarkMode(this);
+//            StatusBarUtil.setColor(this,getColor(R.color.hint_c1c1c1));
+//            setStatusBarColor();
+//        }
+    }
+
+    /**
+     * 修改状态栏颜色，支持4.4以上版本
+     *
+     */
+    public void setStatusBarColor() {
+
+        Window window = getWindow();
+        window.setStatusBarColor(getColor(R.color.hint_c1c1c1));
     }
 
     protected abstract void setContentView();
+
     protected abstract void initWidgetEvent();
+
     protected abstract void initData();
 
     protected abstract T getPresenter();

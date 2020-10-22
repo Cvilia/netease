@@ -12,6 +12,7 @@ public class Constants {
     public static final String COPY_DB_ALREADY = "copy_db_already";
     public static final String FIRST_START = "first_start";
 
+    public static int DEVICE_FIRM = -1;
 
     /**
      * 用户信息相关

@@ -9,7 +9,6 @@
     android:paddingTop="10dp"
     tools:context=".activity.login.LoginActivity">
 
-
     <include
         android:id="@+id/actionBar"
         layout="@layout/normal_actionbar" />

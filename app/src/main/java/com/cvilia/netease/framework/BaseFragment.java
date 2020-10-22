@@ -50,8 +50,16 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment imp
                 EventBus.getDefault().register(this);
             }
         }
+        ViewGroup parent = (ViewGroup) mView.getParent();
+        if (parent != null) {
+            parent.removeView(mView);
+        }
+
+        onViewCreated();
         return mView;
     }
+
+    protected abstract void onViewCreated();
 
     protected abstract View getContentView();
 
@@ -79,5 +87,24 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment imp
     @Override
     public float getSizeInDp() {
         return 360;
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (mPresenter != null) {
+            mPresenter.detachView();
+        }
+        mView = null;
+    }
+
+    @Override
+    public void onDetach() {
+
+        if (registerEventBus() && !EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().unregister(this);
+        }
+
+        super.onDetach();
     }
 }
