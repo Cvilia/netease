@@ -9,9 +9,8 @@
         android:id="@+id/tabTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="我的"
+        android:text="@string/my"
         android:textColor="@drawable/tab_selector"
-        android:textSize="14sp"
-        style=""/>
+        android:textSize="14sp"/>
 
 </LinearLayout>

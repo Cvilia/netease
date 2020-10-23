@@ -1,4 +1,4 @@
-package com.cvilia.netease;
+package com.cvilia.netease.adapter;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;

@@ -1,12 +1,14 @@
 package com.cvilia.netease.framework;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.alibaba.android.arouter.launcher.ARouter;
@@ -48,26 +50,33 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
         initData();
     }
 
+    /**
+     * 隐藏底部导航栏
+     */
+    private void hideNavigator() {
+
+        View decorView = getWindow().getDecorView();
+        int options = View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
+        decorView.setSystemUiVisibility(options);
+        getWindow().setStatusBarColor(getColor(R.color.hint_c1c1c1));
+        getWindow().setNavigationBarColor(Color.TRANSPARENT);
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.hide();
+        }
+
+    }
+
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+
+        hideNavigator();
+    }
 
     protected void onViewCreated() {
-        StatusBarUtil.setTranslucent(this);
-
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-//            StatusBarUtil.setDarkMode(this);
-//            StatusBarUtil.setColor(this,getColor(R.color.hint_c1c1c1));
-//            setStatusBarColor();
-//        }
     }
 
-    /**
-     * 修改状态栏颜色，支持4.4以上版本
-     *
-     */
-    public void setStatusBarColor() {
-
-        Window window = getWindow();
-        window.setStatusBarColor(getColor(R.color.hint_c1c1c1));
-    }
 
     protected abstract void setContentView();
 

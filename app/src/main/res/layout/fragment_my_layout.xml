@@ -1,11 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="我的"/>
+    android:background="@color/bg_ececec"
+    android:gravity="center"
+    android:paddingHorizontal="20dp">
 
-</LinearLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/outlineInfo"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/avatarIv"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="10dp"
+            android:src="@mipmap/default_avatar_circle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <TextView
+            android:id="@+id/nickTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:text="麻辣炖土豆"
+            android:textColor="@color/text_323232"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/avatarIv"
+            app:layout_constraintTop_toTopOf="@id/avatarIv" />
+
+        <TextView
+            android:id="@+id/vipTv"
+            style="@style/VipLevelTextView"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/un_vip_bg"
+            android:text="开通VIP"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="@id/avatarIv"
+            app:layout_constraintStart_toEndOf="@id/avatarIv" />
+
+        <TextView
+            android:id="@+id/levelTv"
+            style="@style/VipLevelTextView"
+            android:layout_marginStart="5dp"
+            android:background="@drawable/level_bg"
+            android:text="Lv.7"
+            android:textColor="@color/text_323232"
+            android:textStyle="italic|bold"
+            app:layout_constraintBaseline_toBaselineOf="@id/vipTv"
+            app:layout_constraintStart_toEndOf="@id/vipTv" />
+
+        <ImageView
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_marginEnd="10dp"
+            android:src="@mipmap/icon_right"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/funRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/outlineInfo"
+        android:background="@drawable/whit_round_rectangle"
+        />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:background="@drawable/whit_round_rectangle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/funRecyclerView"
+        android:layout_marginTop="15dp">
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

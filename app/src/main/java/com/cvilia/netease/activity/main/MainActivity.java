@@ -1,9 +1,6 @@
 package com.cvilia.netease.activity.main;
 
 import android.os.Bundle;
-import android.util.TypedValue;
-import android.view.LayoutInflater;
-import android.view.View;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
@@ -12,16 +9,14 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.cvilia.netease.R;
-import com.cvilia.netease.ViewPagerAdapter;
+import com.cvilia.netease.adapter.ViewPagerAdapter;
 import com.cvilia.netease.config.PageUrlConfig;
 import com.cvilia.netease.databinding.ActivityMainBinding;
-import com.cvilia.netease.databinding.TabItemBinding;
 import com.cvilia.netease.fragment.CloudFragment;
 import com.cvilia.netease.fragment.DiscoverFragment;
 import com.cvilia.netease.fragment.MyFragment;
 import com.cvilia.netease.fragment.VideoFragment;
 import com.cvilia.netease.framework.BaseActivity;
-import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
@@ -56,6 +51,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
     @Override
     protected void initData() {
         mViewBind.viewPager.addOnPageChangeListener(this);
+        mViewBind.viewPager.setCurrentItem(0);
         mFragments = new ArrayList<>();
         mFragments.add(new MyFragment());
         mFragments.add(new DiscoverFragment());
@@ -74,8 +70,6 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
             TextView textView = tab.getCustomView().findViewById(R.id.tabTv);
             textView.setText(tabs[i]);
         }
-
-        mViewBind.viewPager.setCurrentItem(0);
         mViewBind.tabLayout.addOnTabSelectedListener(this);
     }
 
@@ -124,15 +118,16 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
 
     @Override
     public void onTabSelected(TabLayout.Tab tab) {
-        TextView textView =  Objects.requireNonNull(tab.getCustomView()).findViewById(R.id.tabTv);
+        TextView textView = Objects.requireNonNull(tab.getCustomView()).findViewById(R.id.tabTv);
         textView.setSelected(true);
+        textView.setTextColor(getColor(R.color.text_323232));
         textView.getPaint().setFakeBoldText(true);
         mViewBind.viewPager.setCurrentItem(tab.getPosition());
     }
 
     @Override
     public void onTabUnselected(TabLayout.Tab tab) {
-        TextView textView =  Objects.requireNonNull(tab.getCustomView()).findViewById(R.id.tabTv);
+        TextView textView = Objects.requireNonNull(tab.getCustomView()).findViewById(R.id.tabTv);
         textView.setSelected(false);
         textView.getPaint().setFakeBoldText(false);
     }
