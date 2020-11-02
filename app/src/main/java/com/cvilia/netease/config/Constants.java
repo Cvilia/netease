@@ -23,4 +23,11 @@ public class Constants {
     public static final String USER_ID = "user_id";
     public static final String USER_TOKEN = "user_token";
 
+    /**
+     * 转发到音乐动态的资源类型
+     */
+    public enum ResourceType {
+        song, playlist, mv, djradio, djprogram
+    }
+
 }

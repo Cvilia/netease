@@ -45,6 +45,25 @@ public class LoginPresenter extends BasePresenter<LoginContact.View> implements 
 
     @Override
     public void loginByPhone(String phone, String password) {
+        RetrofitUtils.getInstance()
+                .loginByPhone(phone, password)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new NetSubscribe<User>() {
+                    @Override
+                    public void onNext(@NonNull User user) {
+                        if (user != null) {
+                            mView.loginSuccess(user);
+                            NeteaseApplication.app.setUser(user);
+                        }
+                    }
 
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        super.onError(e);
+                        Log.e("LoginPresenter", "onError loginByEmail=" + e.toString());
+                        mView.loginFailed();
+                    }
+                });
     }
 }
