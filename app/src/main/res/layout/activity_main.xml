@@ -1,62 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg_ececec"
+    android:fitsSystemWindows="true"
     android:orientation="vertical"
-    android:paddingTop="10dp"
     tools:context=".activity.main.MainActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <!--        android:fitsSystemWindows="true"  如果不添加这个属性布局就会冲到状态栏里面去
+    看起来actionbar设置垂直居中就没有效果了-->
+
+    <RelativeLayout
         android:id="@+id/actionBar"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:paddingHorizontal="15dp">
+        android:layout_height="50dp"
+        android:background="@color/white"
+        android:paddingHorizontal="10dp"
+        app:layout_constraintBottom_toTopOf="@id/viewPager"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/moreIv"
-            android:layout_width="17dp"
-            android:layout_height="17dp"
-            android:src="@mipmap/icon_more"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tabLayout"
+            android:id="@+id/leftIv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="@id/moreIv"
-            app:layout_constraintEnd_toStartOf="@id/searchIv"
-            app:layout_constraintStart_toEndOf="@id/moreIv"
-            app:layout_constraintTop_toTopOf="@id/moreIv"
-            app:tabTextColor="@color/text_1d1d1d"
-            app:tabSelectedTextColor="@color/black"
-            app:tabIndicator="@null"/>
+            android:layout_centerVertical="true"
+            android:src="@drawable/icon_menu" />
+
+        <TextView
+            android:id="@+id/centerEt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="搜索框" />
 
         <ImageView
-            android:id="@+id/searchIv"
-            android:layout_width="17dp"
-            android:layout_height="17dp"
-            android:src="@mipmap/icon_search"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:id="@+id/rightIv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/icon_micro" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </RelativeLayout>
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/actionBar" />
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/playInfoRl"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/actionBar" />
 
     <RelativeLayout
+        android:id="@+id/playInfoRl"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_alignParentBottom="true">
+        android:layout_height="50dp"
+        android:background="@color/white"
+        app:layout_constraintBottom_toTopOf="@id/tabLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/viewPager">
 
         <View
             android:layout_width="match_parent"
@@ -71,4 +79,18 @@
 
     </RelativeLayout>
 
-</RelativeLayout>
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/playInfoRl"
+        app:tabIndicator="@null"
+        app:tabSelectedTextColor="@color/black"
+        app:tabTextColor="@color/text_1d1d1d" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

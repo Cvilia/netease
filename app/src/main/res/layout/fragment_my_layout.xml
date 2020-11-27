@@ -63,7 +63,7 @@
             android:layout_width="15dp"
             android:layout_height="15dp"
             android:layout_marginEnd="10dp"
-            android:src="@mipmap/icon_right"
+            android:src="@drawable/icon_right"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>
