@@ -2,8 +2,15 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:gravity="center">
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/tabItemIv"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_marginBottom="5dp"
+        android:src="@drawable/icon_my" />
 
     <TextView
         android:id="@+id/tabTv"
@@ -11,6 +18,6 @@
         android:layout_height="wrap_content"
         android:text="@string/my"
         android:textColor="@drawable/tab_selector"
-        android:textSize="14sp"/>
+        android:textSize="14sp" />
 
 </LinearLayout>

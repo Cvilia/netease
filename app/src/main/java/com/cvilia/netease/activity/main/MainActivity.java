@@ -1,6 +1,7 @@
 package com.cvilia.netease.activity.main;
 
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
@@ -23,6 +24,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * 首页
+ */
 @Route(path = PageUrlConfig.MAIN_PAGE)
 public class MainActivity extends BaseActivity<MainPresenter> implements MainContact.View, ViewPager.OnPageChangeListener,
         TabLayout.OnTabSelectedListener {
@@ -69,6 +73,16 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
             }
             TextView textView = tab.getCustomView().findViewById(R.id.tabTv);
             textView.setText(tabs[i]);
+            ImageView itemIv = tab.getCustomView().findViewById(R.id.tabItemIv);
+            if (i == 0) {
+                itemIv.setImageResource(R.drawable.icon_my);
+            } else if (i == 1) {
+                itemIv.setImageResource(R.drawable.icon_discover);
+            } else if (i == 2) {
+                itemIv.setImageResource(R.drawable.icon_cloud);
+            } else if (i == 3) {
+                itemIv.setImageResource(R.drawable.icon_video);
+            }
         }
         mViewBind.tabLayout.addOnTabSelectedListener(this);
     }
@@ -120,8 +134,13 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
     public void onTabSelected(TabLayout.Tab tab) {
         TextView textView = Objects.requireNonNull(tab.getCustomView()).findViewById(R.id.tabTv);
         textView.setSelected(true);
-        textView.setTextColor(getColor(R.color.text_323232));
+        textView.setTextColor(getColor(R.color.app_main));
         textView.getPaint().setFakeBoldText(true);
+
+        ImageView itemIv = Objects.requireNonNull(tab.getCustomView()).findViewById(R.id.tabItemIv);
+        itemIv.setColorFilter(getColor(R.color.app_main));
+        itemIv.setSelected(true);
+
         mViewBind.viewPager.setCurrentItem(tab.getPosition());
     }
 
@@ -129,7 +148,12 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
     public void onTabUnselected(TabLayout.Tab tab) {
         TextView textView = Objects.requireNonNull(tab.getCustomView()).findViewById(R.id.tabTv);
         textView.setSelected(false);
+        textView.setTextColor(getColor(R.color.text_323232));
         textView.getPaint().setFakeBoldText(false);
+
+        ImageView itemIv = Objects.requireNonNull(tab.getCustomView()).findViewById(R.id.tabItemIv);
+        itemIv.setSelected(false);
+        itemIv.setColorFilter(getColor(R.color.text_323232));
     }
 
     @Override
