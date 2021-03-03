@@ -10,7 +10,7 @@
         android:layout_width="16dp"
         android:layout_height="16dp"
         android:layout_marginBottom="5dp"
-        android:src="@drawable/icon_my" />
+        android:src="@drawable/selected_my" />
 
     <TextView
         android:id="@+id/tabTv"

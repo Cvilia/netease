@@ -52,6 +52,12 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
     }
 
     @Override
+    protected View getRootView() {
+        mViewBind = ActivityLoginBinding.inflate(getLayoutInflater());
+        return mViewBind.getRoot();
+    }
+
+    @Override
     protected void initData() {
         if (loginType == 2) {
             mViewBind.loginTypeTv.setText(getString(R.string.login_by_email));
@@ -66,11 +72,6 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
         return new LoginPresenter();
     }
 
-    @Override
-    protected void setContentView() {
-        mViewBind = ActivityLoginBinding.inflate(getLayoutInflater());
-        setContentView(mViewBind.getRoot());
-    }
 
     @Override
     public void loginSuccess(User user) {

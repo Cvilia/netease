@@ -33,7 +33,7 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView();
+        setContentView(getRootView());
         StatusBarUtil.setLightMode(this);
         ARouter.getInstance().inject(this);
         ActivityManager.getInstance().addActivity(this);
@@ -76,8 +76,7 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
     protected void onViewCreated() {
     }
 
-
-    protected abstract void setContentView();
+    protected abstract View getRootView();
 
     protected abstract void initWidgetEvent();
 
