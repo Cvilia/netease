@@ -1,6 +1,7 @@
 package com.cvilia.netease.activity;
 
 import android.Manifest;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.SpannableString;
@@ -201,6 +202,7 @@ public class LauncherActivity extends AppCompatActivity implements CustomAdapt, 
         @Override
         public void onClick(@NonNull View widget) {
             if (tag == 1) {
+
                 Toast.makeText(NeteaseApplication.app, "《用户协议》", Toast.LENGTH_SHORT).show();
             } else if (tag == 2) {
                 Toast.makeText(NeteaseApplication.app, "《隐私政策》", Toast.LENGTH_SHORT).show();

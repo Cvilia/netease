@@ -117,29 +117,29 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
 
     private void login() {
 
-        if (loginType == 1) {//手机
-
-        } else if (loginType == 2) {//邮箱
-            if (TextUtils.isEmpty(mViewBind.accountEt.getText().toString())) {
-                ToastUtil.showShort(getString(R.string.please_input_email));
-                return;
-            }
-            if (!RegexUtils.isMail(mViewBind.accountEt.getText().toString())) {
-                ToastUtil.showShort(getString(R.string.err_email));
-                return;
-            }
-            if (TextUtils.isEmpty(mViewBind.passwordEt.getText().toString())) {
-                ToastUtil.showShort(getString(R.string.null_password));
-                return;
-            }
-            String password = Md5.getMd5(mViewBind.passwordEt.getText().toString());
-            if (!TextUtils.isEmpty(password)) {
-                Log.e(TAG, password);
-                Context context;
-                dialog = new ProgressDialog(this);
-                dialog.show();
-                mPresenter.loginByEmail(mViewBind.accountEt.getText().toString(), password);
-            }
+        if (TextUtils.isEmpty(mViewBind.accountEt.getText().toString())) {
+            ToastUtil.showShort(getString(loginType == 2 ? R.string.please_input_email : R.string.please_input_phone));
+            return;
+        }
+        if (loginType == 2 && !RegexUtils.isMail(mViewBind.accountEt.getText().toString())) {
+            ToastUtil.showShort(getString(R.string.err_email));
+            return;
+        }
+        if (TextUtils.isEmpty(mViewBind.passwordEt.getText().toString())) {
+            ToastUtil.showShort(getString(R.string.null_password));
+            return;
+        }
+        String password = Md5.getMd5(mViewBind.passwordEt.getText().toString());
+        if (TextUtils.isEmpty(password)) {
+            ToastUtil.showShort(getString(R.string.unknown_err));
+            return;
+        }
+        dialog = new ProgressDialog(this);
+        dialog.show();
+        if (loginType == 1) {
+            mPresenter.loginByPhone(mViewBind.accountEt.getText().toString(), password);
+        } else {
+            mPresenter.loginByEmail(mViewBind.accountEt.getText().toString(), password);
         }
 
     }

@@ -64,7 +64,6 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
         if (actionBar != null) {
             actionBar.hide();
         }
-
     }
 
     @Override

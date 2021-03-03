@@ -37,7 +37,7 @@ import retrofit2.http.Query;
  */
 public interface ApiService {
 
-    String BASE_SERVER = "http://111.229.248.158:3000";
+    String BASE_SERVER = "http://121.89.204.40:3000";
 
     /**
      * 手机号登录
