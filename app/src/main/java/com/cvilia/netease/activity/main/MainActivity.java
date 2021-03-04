@@ -36,9 +36,9 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
     private ActivityMainBinding mBinding;
     private List<Fragment> mFragments;
     private ViewPagerAdapter mAdapter;
-    private static final String[] tabs = {"我的", "发现", "云村"};
-    private static final int[] selectedIcons = {R.drawable.selected_my, R.drawable.selected_discovery, R.drawable.selected_cloud};
-    private static final int[] unSelectedIcons = {R.drawable.unselected_my, R.drawable.unselected_discovery, R.drawable.unselected_cloud};
+    private static final String[] tabTitles = {"发现", "云村", "我的"};
+    private static final int[] tabImgs = {R.drawable.main_tab_img_discovery, R.drawable.main_tab_img_cloud, R.drawable.main_tab_img_my};
+
 
     @Override
     protected View getRootView() {
@@ -57,9 +57,9 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
         mBinding.viewPager.addOnPageChangeListener(this);
         mBinding.viewPager.setCurrentItem(0);
         mFragments = new ArrayList<>();
-        mFragments.add(new MyFragment());
         mFragments.add(new DiscoverFragment());
         mFragments.add(new CloudFragment());
+        mFragments.add(new MyFragment());
         mAdapter = new ViewPagerAdapter(mFragments, getSupportFragmentManager(),
                 FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         mBinding.viewPager.setAdapter(mAdapter);
@@ -68,14 +68,18 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
         for (int i = 0; i < mFragments.size(); i++) {
             TabLayout.Tab tab = mBinding.tabLayout.getTabAt(i);
             if (tab != null) {
-                tab.setCustomView(getTabView(i));
+                tab.setCustomView(getTabView(i, tab));
             }
         }
         mBinding.tabLayout.addOnTabSelectedListener(this);
     }
 
-    private View getTabView(int index) {
+    private View getTabView(int index, TabLayout.Tab tab) {
         View view = LayoutInflater.from(this).inflate(R.layout.tab_item, null);
+        TextView title = view.findViewById(R.id.tabTitle);
+        title.setText(tabTitles[index]);
+        ImageView img = view.findViewById(R.id.tabImg);
+        img.setImageResource(tabImgs[index]);
         return view;
     }
 
@@ -124,26 +128,10 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
 
     @Override
     public void onTabSelected(TabLayout.Tab tab) {
-        TextView textView = Objects.requireNonNull(tab.getCustomView()).findViewById(R.id.tabTv);
-        textView.setSelected(true);
-        textView.setTextColor(getColor(R.color.app_main));
-        textView.getPaint().setFakeBoldText(true);
-
-        ImageView itemIv = Objects.requireNonNull(tab.getCustomView()).findViewById(R.id.tabItemIv);
-        itemIv.setImageResource(selectedIcons[tab.getPosition()]);
-
-        mBinding.viewPager.setCurrentItem(tab.getPosition());
     }
 
     @Override
     public void onTabUnselected(TabLayout.Tab tab) {
-        TextView textView = Objects.requireNonNull(tab.getCustomView()).findViewById(R.id.tabTv);
-        textView.setSelected(false);
-        textView.setTextColor(getColor(R.color.text_323232));
-        textView.getPaint().setFakeBoldText(false);
-
-        ImageView itemIv = Objects.requireNonNull(tab.getCustomView()).findViewById(R.id.tabItemIv);
-        itemIv.setImageResource(unSelectedIcons[tab.getPosition()]);
     }
 
     @Override
