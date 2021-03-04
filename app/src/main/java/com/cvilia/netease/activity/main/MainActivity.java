@@ -1,6 +1,7 @@
 package com.cvilia.netease.activity.main;
 
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -49,7 +50,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
 
     @Override
     protected void initWidgetEvent() {
-
+        mBinding.leftIv.setOnClickListener(v -> mBinding.rootDrawer.openDrawer(Gravity.LEFT));
     }
 
     @Override
