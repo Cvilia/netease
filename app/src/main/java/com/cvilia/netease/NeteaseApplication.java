@@ -3,8 +3,11 @@ package com.cvilia.netease;
 import android.app.Application;
 
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.cvilia.netease.bean.User;
+import com.cvilia.netease.databean.User;
+import com.cvilia.netease.objectbox.ObjectBox;
 import com.tencent.mmkv.MMKV;
+
+import io.objectbox.android.ObjectBoxLiveData;
 
 /**
  * author: lzy
@@ -34,6 +37,7 @@ public class NeteaseApplication extends Application {
     private void init() {
         ARouter.init(this);
         MMKV.initialize(this);
+        ObjectBox.init(this);
     }
 
 }

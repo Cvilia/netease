@@ -1,6 +1,6 @@
 package com.cvilia.netease.activity.login;
 
-import com.cvilia.netease.bean.User;
+import com.cvilia.netease.databean.User;
 import com.cvilia.netease.framework.IPresenter;
 import com.cvilia.netease.framework.IView;
 

@@ -20,7 +20,7 @@ import com.cvilia.netease.utils.DimenUtil;
 public class ProgressDialog extends Dialog {
 
     private ProgressDialogBinding mViewBind;
-    private Context context;
+    private final Context context;
 
     public ProgressDialog(@NonNull Context context) {
         super(context);

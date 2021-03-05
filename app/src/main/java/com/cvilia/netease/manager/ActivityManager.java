@@ -11,10 +11,10 @@ import java.util.Stack;
  */
 public class ActivityManager {
 
-    private Stack<Activity> activities;
+    private final Stack<Activity> activities;
 
     private static class SingleActivityManager {
-        private static ActivityManager instance = new ActivityManager();
+        private static final ActivityManager instance = new ActivityManager();
     }
 
     private ActivityManager() {

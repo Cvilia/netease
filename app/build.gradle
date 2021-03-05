@@ -1,16 +1,15 @@
 apply plugin: 'com.android.application'
+apply plugin: 'io.objectbox'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
-apply plugin: 'org.greenrobot.greendao'
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion "30.0.0"
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
 
     defaultConfig {
         applicationId "com.cvilia.netease"
         minSdkVersion 23
-        targetSdkVersion 29
+        targetSdkVersion 30
         versionCode 1
         versionName "1.0.0"
 
@@ -24,15 +23,9 @@ android {
         ndk {
 //            abiFilters "armeabi-v7a"
         }
-        //        如果项目中用到注解，需要显示声明注释处理器
-        javaCompileOptions {
-            annotationProcessorOptions {
-                includeCompileClasspath = true
-            }
-        }
     }
-    viewBinding {
-        enabled = true
+    buildFeatures {
+        viewBinding true
     }
 
     compileOptions {
@@ -45,11 +38,6 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
-    }
-    greendao {
-        schemaVersion 1
-        targetGenDir 'src/main/java'
-        daoPackage "${android.defaultConfig.applicationId}.sql"
     }
 }
 
@@ -80,14 +68,13 @@ dependencies {
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.4'
 
 //    腾讯持久化存储
-    implementation 'com.tencent:mmkv-static:1.2.2'
+    implementation 'com.tencent:mmkv-static:1.2.7'
 
     implementation 'com.scwang.smart:refresh-layout-kernel:2.0.1'
     implementation 'com.scwang.smart:refresh-header-radar:2.0.1'
 
     implementation 'com.jaeger.statusbarutil:library:1.5.1'
 
-    implementation 'org.greenrobot:greendao:3.3.0' // add library
 //    知乎图片选择器
     implementation 'com.zhihu.android:matisse:0.5.2' // add library
 

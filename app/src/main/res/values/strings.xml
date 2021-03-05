@@ -10,7 +10,7 @@
     <string name="null_password">请输入密码</string>
     <string name="please_waiting">正在加载，请稍后……</string>
     <string name="privacy_and_agreement">同意《用户协议》《隐私政策》《儿童隐私政策》</string>
-    
+
     <string name="unknown_err">未知错误，请稍后重试！</string>
 
     <string name="permission_explain">权限说明</string>
@@ -21,6 +21,12 @@
     <string name="authorization">授权</string>
 
     <string name="my">我的</string>
+    <string name="local_music">本地音乐</string>
+    <string name="local_favorite">本地收藏</string>
+    <string name="play_recent">最近播放</string>
+    <string name="online_favorite">在线收藏</string>
+
+
     <string name="discover">发现</string>
     <string name="cloud">云村</string>
     <string name="video">视频</string>

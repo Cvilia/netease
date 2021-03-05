@@ -193,7 +193,7 @@ public class LauncherActivity extends AppCompatActivity implements CustomAdapt, 
 
     private class MyClickSpan extends ClickableSpan {
         //1 = 用户协议  2 = 隐私政策 3 = 儿童隐私协议
-        private int tag;
+        private final int tag;
 
         public MyClickSpan(int tag) {
             this.tag = tag;

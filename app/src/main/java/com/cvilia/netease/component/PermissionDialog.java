@@ -24,10 +24,10 @@ import com.cvilia.netease.utils.DimenUtil;
  */
 public class PermissionDialog extends Dialog implements View.OnClickListener {
 
-    private Context context;
+    private final Context context;
     private PermissionDialogBinding mViewBind;
-    private IDialogClickListener listener;
-    private String mContent;
+    private final IDialogClickListener listener;
+    private final String mContent;
 
 
     public PermissionDialog(@NonNull Context context, String content, IDialogClickListener listener) {
