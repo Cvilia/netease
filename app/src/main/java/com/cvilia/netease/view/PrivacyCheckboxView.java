@@ -20,7 +20,7 @@ import com.cvilia.netease.R;
 public class PrivacyCheckboxView extends View {
 
     private Paint mOutCirclePaint, mInCirclePaint;
-    private Context context;
+    private final Context context;
     private int sweepAngle;
     private boolean checked = false;
 

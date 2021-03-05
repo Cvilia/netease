@@ -1,11 +1,9 @@
 package com.cvilia.netease.net;
 
-import android.content.Context;
-import android.text.TextUtils;
 import android.util.Log;
 
 import com.cvilia.netease.NeteaseApplication;
-import com.cvilia.netease.bean.User;
+import com.cvilia.netease.databean.User;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -36,7 +34,7 @@ public class RetrofitUtils {
     private static final int CONNECT_TIME = 15;//连接时间
     private static final int WAIT_TIME = 30;//读取时间
 
-    private ApiService api;
+    private final ApiService api;
     private static OkHttpClient okHttpClient;
     private static RetrofitUtils instance;
 

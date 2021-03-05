@@ -3,7 +3,7 @@ package com.cvilia.netease.activity.login;
 import android.util.Log;
 
 import com.cvilia.netease.NeteaseApplication;
-import com.cvilia.netease.bean.User;
+import com.cvilia.netease.databean.User;
 import com.cvilia.netease.framework.BasePresenter;
 import com.cvilia.netease.net.NetSubscribe;
 import com.cvilia.netease.net.RetrofitUtils;

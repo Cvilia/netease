@@ -1,5 +1,6 @@
 package com.cvilia.netease.activity.main;
 
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,11 +20,16 @@ import com.cvilia.netease.fragment.CloudFragment;
 import com.cvilia.netease.fragment.DiscoverFragment;
 import com.cvilia.netease.fragment.MyFragment;
 import com.cvilia.netease.framework.BaseActivity;
+import com.cvilia.netease.objectbox.ObjectBox;
+import com.cvilia.netease.sqlmodel.User;
+import com.cvilia.netease.sqlmodel.User_;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+
+import io.objectbox.Box;
 
 /**
  * 首页

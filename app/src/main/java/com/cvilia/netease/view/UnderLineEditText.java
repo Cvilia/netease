@@ -18,7 +18,7 @@ import com.cvilia.netease.utils.DimenUtil;
 @SuppressLint("AppCompatCustomView")
 public class UnderLineEditText extends EditText {
 
-    private Paint mPaint;
+    private final Paint mPaint;
 
     public UnderLineEditText(Context context) {
         this(context, null);

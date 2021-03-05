@@ -1,33 +1,32 @@
 package com.cvilia.netease.net;
 
-import com.cvilia.netease.bean.BestPlayListCategory;
-import com.cvilia.netease.bean.BindInfo;
-import com.cvilia.netease.bean.CheckMusic;
-import com.cvilia.netease.bean.CloudHotComment;
-import com.cvilia.netease.bean.CountryInfo;
-import com.cvilia.netease.bean.DefaultKeywords;
-import com.cvilia.netease.bean.DetailHotSearchList;
-import com.cvilia.netease.bean.Follows;
-import com.cvilia.netease.bean.HeartbeatMode;
-import com.cvilia.netease.bean.HotSearchList;
-import com.cvilia.netease.bean.HotTopic;
-import com.cvilia.netease.bean.MessageCode;
-import com.cvilia.netease.bean.PlayListCategory;
-import com.cvilia.netease.bean.PlayRecord;
-import com.cvilia.netease.bean.Search;
-import com.cvilia.netease.bean.SearchMultiMatch;
-import com.cvilia.netease.bean.SearchSuggest;
-import com.cvilia.netease.bean.SingerList;
-import com.cvilia.netease.bean.SingerSongs;
-import com.cvilia.netease.bean.SongUrl;
-import com.cvilia.netease.bean.SubCount;
-import com.cvilia.netease.bean.TopPlayList;
-import com.cvilia.netease.bean.User;
-import com.cvilia.netease.bean.UserLevelInfo;
+import com.cvilia.netease.databean.BestPlayListCategory;
+import com.cvilia.netease.databean.BindInfo;
+import com.cvilia.netease.databean.CheckMusic;
+import com.cvilia.netease.databean.CloudHotComment;
+import com.cvilia.netease.databean.CountryInfo;
+import com.cvilia.netease.databean.DefaultKeywords;
+import com.cvilia.netease.databean.DetailHotSearchList;
+import com.cvilia.netease.databean.Follows;
+import com.cvilia.netease.databean.HeartbeatMode;
+import com.cvilia.netease.databean.HotSearchList;
+import com.cvilia.netease.databean.HotTopic;
+import com.cvilia.netease.databean.MessageCode;
+import com.cvilia.netease.databean.PlayListCategory;
+import com.cvilia.netease.databean.PlayRecord;
+import com.cvilia.netease.databean.Search;
+import com.cvilia.netease.databean.SearchMultiMatch;
+import com.cvilia.netease.databean.SearchSuggest;
+import com.cvilia.netease.databean.SingerList;
+import com.cvilia.netease.databean.SingerSongs;
+import com.cvilia.netease.databean.SongUrl;
+import com.cvilia.netease.databean.SubCount;
+import com.cvilia.netease.databean.TopPlayList;
+import com.cvilia.netease.databean.User;
+import com.cvilia.netease.databean.UserLevelInfo;
 
 import io.reactivex.rxjava3.core.Observable;
 import retrofit2.http.GET;
-import retrofit2.http.POST;
 import retrofit2.http.Query;
 
 /**

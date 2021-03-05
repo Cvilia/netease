@@ -18,7 +18,7 @@ import okhttp3.Response;
  */
 public class BaseInterceptor implements Interceptor {
 
-    private Map<String, String> headers;
+    private final Map<String, String> headers;
 
     public BaseInterceptor(Map<String, String> headers) {
         this.headers = headers;
