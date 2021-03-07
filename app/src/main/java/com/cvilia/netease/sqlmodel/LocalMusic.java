@@ -3,6 +3,8 @@ package com.cvilia.netease.sqlmodel;
 
 import androidx.annotation.NonNull;
 
+import java.io.Serializable;
+
 import io.objectbox.annotation.Entity;
 import io.objectbox.annotation.Id;
 
@@ -12,7 +14,7 @@ import io.objectbox.annotation.Id;
  * describe：本地音乐实体类
  */
 @Entity
-public class LocalMusic {
+public class LocalMusic implements Serializable {
     @Id
     private long id;
     private String path;//音乐路径

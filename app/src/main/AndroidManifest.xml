@@ -18,7 +18,11 @@
         android:roundIcon="@mipmap/app_icon"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
-        <activity android:name=".activity.LocalMusicActivity"></activity>
+        <service
+            android:name=".service.PlayerIntentService"
+            android:exported="false" />
+
+        <activity android:name=".activity.LocalMusicActivity" />
         <activity android:name=".activity.LoginActivity" />
         <activity
             android:name=".activity.LauncherActivity"

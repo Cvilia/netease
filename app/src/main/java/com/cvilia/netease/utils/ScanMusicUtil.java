@@ -2,7 +2,10 @@ package com.cvilia.netease.utils;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.os.Build;
 import android.provider.MediaStore;
+
+import androidx.annotation.RequiresApi;
 
 import com.cvilia.netease.sqlmodel.LocalMusic;
 
@@ -29,15 +32,17 @@ public class ScanMusicUtil {
                 LocalMusic music = new LocalMusic();
                 //歌曲名称
                 music.setName(cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.TITLE)));
-                //歌手
-                music.setArtist(cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.ARTIST)));
-                //专辑名
-                music.setAlbum(cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.ALBUM)));
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                    //歌手
+                    music.setArtist(cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.ARTIST)));
+                    //专辑名
+                    music.setAlbum(cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.ALBUM)));
+                    //歌曲时长
+                    music.setDuration(cursor.getLong(cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.DURATION)));
+                }
                 //歌曲路径
                 music.setPath(cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.DATA)));
                 music.setType(getMusicType(cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.DATA))));
-                //歌曲时长
-                music.setDuration(cursor.getLong(cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.DURATION)));
                 //歌曲大小
                 music.setSize(cursor.getLong(cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.SIZE)));
                 music.setIsLocal(true);
