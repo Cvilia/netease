@@ -1,6 +1,8 @@
 package com.cvilia.netease.sqlmodel;
 
 
+import androidx.annotation.NonNull;
+
 import io.objectbox.annotation.Entity;
 import io.objectbox.annotation.Id;
 
@@ -24,7 +26,7 @@ public class LocalMusic {
     private String playTimes;//播放次数
     private String addTime;//创建时间
     private String type;//文件类型
-    private String isLocal;//是否是本地文件 true = 是 false = 在线
+    private boolean isLocal;//是否是本地文件 true = 是 false = 在线
     private String folder;//用于创建本地歌单
     private long recentPlayTime;//最近播放时间
 
@@ -125,11 +127,11 @@ public class LocalMusic {
         this.type = type;
     }
 
-    public String getIsLocal() {
+    public boolean getIsLocal() {
         return isLocal;
     }
 
-    public void setIsLocal(String isLocal) {
+    public void setIsLocal(boolean isLocal) {
         this.isLocal = isLocal;
     }
 
@@ -148,4 +150,5 @@ public class LocalMusic {
     public void setRecentPlayTime(long recentPlayTime) {
         this.recentPlayTime = recentPlayTime;
     }
+
 }

@@ -24,7 +24,7 @@
     },
     {
       "id": "2:6711758742295821025",
-      "lastPropertyId": "14:2140242302252496597",
+      "lastPropertyId": "15:7259064076271518741",
       "name": "LocalMusic",
       "properties": [
         {
@@ -100,6 +100,12 @@
           "id": "14:2140242302252496597",
           "name": "folder",
           "type": 9
+        },
+        {
+          "id": "15:7259064076271518741",
+          "name": "recentPlayTime",
+          "type": 6,
+          "flags": 4
         }
       ],
       "relations": []

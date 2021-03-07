@@ -23,6 +23,16 @@ public class DiscoverFragment extends BaseFragment {
     }
 
     @Override
+    protected void initWidgetEvent() {
+
+    }
+
+    @Override
+    protected void initData() {
+
+    }
+
+    @Override
     protected View getContentView() {
         mViewBind = FragmentDiscoverLayoutBinding.inflate(getLayoutInflater());
         return mViewBind.getRoot();

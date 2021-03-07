@@ -1,8 +1,9 @@
-package com.cvilia.netease.activity.login;
+package com.cvilia.netease.mvp.p;
 
 import android.util.Log;
 
 import com.cvilia.netease.NeteaseApplication;
+import com.cvilia.netease.mvp.m.LoginContact;
 import com.cvilia.netease.databean.User;
 import com.cvilia.netease.framework.BasePresenter;
 import com.cvilia.netease.net.NetSubscribe;
