@@ -23,6 +23,16 @@ public class CloudFragment extends BaseFragment {
     }
 
     @Override
+    protected void initWidgetEvent() {
+
+    }
+
+    @Override
+    protected void initData() {
+
+    }
+
+    @Override
     protected View getContentView() {
         mViewBind = FragmentCloudLayoutBinding.inflate(getLayoutInflater());
         return mViewBind.getRoot();

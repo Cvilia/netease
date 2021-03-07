@@ -1,4 +1,4 @@
-package com.cvilia.netease.activity.main;
+package com.cvilia.netease.mvp.m;
 
 import com.cvilia.netease.framework.IPresenter;
 import com.cvilia.netease.framework.IView;
@@ -10,11 +10,11 @@ import com.cvilia.netease.framework.IView;
  */
 public class MainContact {
 
-    interface Presenter extends IPresenter<View>{
+    public interface Presenter extends IPresenter<View>{
         void show();
     }
 
-    interface View extends IView{
+    public interface View extends IView{
         void loadingSuccess();
         void loadingFailed();
     }

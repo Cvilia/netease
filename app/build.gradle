@@ -52,9 +52,9 @@ dependencies {
 
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:adapter-rxjava3:2.9.0'
-    implementation 'com.squareup.okhttp3:logging-interceptor:4.8.1'
+    implementation 'com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.2'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
-    implementation 'com.squareup.okhttp3:okhttp:4.9.0'
+    implementation 'com.squareup.okhttp3:okhttp:5.0.0-alpha.2'
     implementation 'com.google.code.gson:gson:2.8.6'
 
     implementation 'io.reactivex.rxjava3:rxjava:3.0.6'
@@ -78,14 +78,16 @@ dependencies {
 //    知乎图片选择器
     implementation 'com.zhihu.android:matisse:0.5.2' // add library
 
-    implementation 'com.github.bumptech.glide:glide:4.11.0'
-    implementation 'com.squareup.picasso:picasso:2.5.2'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+    implementation 'com.github.bumptech.glide:glide:4.12.0'
+    implementation 'com.squareup.picasso:picasso:2.71828'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
 
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.5'
 
     //viewpager indicator
     implementation 'com.github.hackware1993:MagicIndicator:1.7.0'
+
+    implementation 'com.google.android.exoplayer:exoplayer:2.13.2'
 
 //    java 实体类免于写Getter Setter
 //    compileOnly 'org.projectlombok:lombok:1.18.16'

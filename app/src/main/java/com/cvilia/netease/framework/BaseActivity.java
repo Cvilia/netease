@@ -73,8 +73,7 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
         hideNavigator();
     }
 
-    protected void onViewCreated() {
-    }
+    protected abstract void onViewCreated();
 
     protected abstract View getRootView();
 

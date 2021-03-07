@@ -5,7 +5,7 @@
     android:id="@+id/rootDrawer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.main.MainActivity">
+    tools:context=".activity.MainActivity">
 
     <!--        android:fitsSystemWindows="true"  如果不添加这个属性布局就会冲到状态栏里面去
     看起来actionbar设置垂直居中就没有效果了-->
@@ -13,7 +13,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/bg_ececec"
+        android:background="@color/app_main_bg"
         android:fitsSystemWindows="true">
 
         <include android:id="@+id/actionbar"
@@ -76,7 +76,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="left"
-        android:background="@color/bg_ececec">
+        android:background="@color/app_main_bg">
 
         <TextView
             android:layout_width="wrap_content"

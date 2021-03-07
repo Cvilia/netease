@@ -1,4 +1,4 @@
-package com.cvilia.netease.activity.login;
+package com.cvilia.netease.activity;
 
 import android.os.Bundle;
 import android.text.InputType;
@@ -11,12 +11,14 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.facade.callback.NavCallback;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.cvilia.netease.R;
+import com.cvilia.netease.mvp.m.LoginContact;
 import com.cvilia.netease.databean.User;
 import com.cvilia.netease.component.ProgressDialog;
 import com.cvilia.netease.config.Constants;
 import com.cvilia.netease.config.PageUrlConfig;
 import com.cvilia.netease.databinding.ActivityLoginBinding;
 import com.cvilia.netease.framework.BaseActivity;
+import com.cvilia.netease.mvp.p.LoginPresenter;
 import com.cvilia.netease.sp.MMKVUtil;
 import com.cvilia.netease.utils.Md5;
 import com.cvilia.netease.utils.RegexUtils;
@@ -44,7 +46,6 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
 
     @Override
     protected void onViewCreated() {
-        super.onViewCreated();
         mViewBind.actionBar.backIv.setOnClickListener(this);
         mViewBind.loginBtn.setOnClickListener(this);
     }

@@ -54,12 +54,17 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment imp
         if (parent != null) {
             parent.removeView(mView);
         }
-
         onViewCreated();
+        initData();
+        initWidgetEvent();
         return mView;
     }
 
     protected abstract void onViewCreated();
+
+    protected abstract void initWidgetEvent();
+
+    protected abstract void initData();
 
     protected abstract View getContentView();
 

@@ -1,4 +1,4 @@
-package com.cvilia.netease.activity.login;
+package com.cvilia.netease.mvp.m;
 
 import com.cvilia.netease.databean.User;
 import com.cvilia.netease.framework.IPresenter;
@@ -11,13 +11,13 @@ import com.cvilia.netease.framework.IView;
  */
 public class LoginContact {
 
-    interface Presenter extends IPresenter<View> {
+    public interface Presenter extends IPresenter<View> {
         void loginByEmail(String email, String password);
 
         void loginByPhone(String phone, String password);
     }
 
-    interface View extends IView {
+    public interface View extends IView {
         void loginSuccess(User user);
 
         void loginFailed();

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_ececec"
+    android:background="@color/app_main_bg"
     android:gravity="center"
     android:paddingHorizontal="20dp">
 
@@ -108,7 +108,7 @@
         android:background="@drawable/whit_round_rectangle"
         android:gravity="center"
         android:orientation="vertical"
-        app:layout_constraintEnd_toStartOf="@id/onlineFavoriteLl"
+        app:layout_constraintEnd_toStartOf="@id/playRecentLl"
         app:layout_constraintHorizontal_weight="1"
         app:layout_constraintStart_toEndOf="@id/localLl"
         app:layout_constraintTop_toTopOf="@id/localLl">
@@ -130,7 +130,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/onlineFavoriteLl"
+        android:id="@+id/playRecentLl"
         android:layout_width="0dp"
         android:layout_height="120dp"
         android:layout_marginStart="10dp"
