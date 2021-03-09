@@ -45,7 +45,7 @@ public class ScanMusicUtil {
                 music.setType(getMusicType(cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.DATA))));
                 //歌曲大小
                 music.setSize(cursor.getLong(cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.SIZE)));
-                music.setIsLocal(true);
+                music.setLocal(true);
                 list.add(music);
             }
             // 释放资源

@@ -29,10 +29,8 @@ public class LoginPresenter extends BasePresenter<LoginContact.View> implements 
                 .subscribe(new NetSubscribe<User>() {
                     @Override
                     public void onNext(@NonNull User user) {
-                        if (user != null) {
-                            mView.loginSuccess(user);
-                            NeteaseApplication.app.setUser(user);
-                        }
+                        mView.loginSuccess(user);
+                        NeteaseApplication.app.setUser(user);
                     }
 
                     @Override
