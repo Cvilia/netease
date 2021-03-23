@@ -25,6 +25,8 @@ import com.cvilia.netease.mvp.p.LocalMusicPresenter;
 import com.cvilia.netease.sqlmodel.LocalMusic;
 import com.cvilia.netease.utils.RxPermissionUtils;
 import com.cvilia.netease.utils.ToastUtil;
+import com.lzx.starrysky.SongInfo;
+import com.lzx.starrysky.StarrySky;
 import com.tbruyelle.rxpermissions3.Permission;
 
 import java.util.List;

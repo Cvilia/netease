@@ -7,8 +7,6 @@ import com.cvilia.netease.databean.User;
 import com.cvilia.netease.objectbox.ObjectBox;
 import com.tencent.mmkv.MMKV;
 
-import io.objectbox.android.ObjectBoxLiveData;
-
 /**
  * author: lzy
  * date: 2020/10/10

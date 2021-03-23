@@ -1,2 +1,3 @@
+include ':bubbleplayer'
 include ':app'
 rootProject.name = "Netease"
