@@ -24,7 +24,7 @@ import me.jessyan.autosize.internal.CustomAdapt;
  */
 public abstract class BaseFragment<T extends BasePresenter> extends Fragment implements CustomAdapt, IView {
 
-    private T mPresenter;
+    protected T mPresenter;
     protected Context mContext;
     protected Activity mActivity;
     protected View mView;

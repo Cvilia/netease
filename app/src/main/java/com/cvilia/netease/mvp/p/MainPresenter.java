@@ -1,7 +1,7 @@
 package com.cvilia.netease.mvp.p;
 
 import com.cvilia.netease.framework.BasePresenter;
-import com.cvilia.netease.mvp.m.MainContact;
+import com.cvilia.netease.mvp.c.MainContact;
 
 /**
  * author: lzy

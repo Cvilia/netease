@@ -3,7 +3,7 @@ package com.cvilia.netease.mvp.p;
 import android.app.Activity;
 
 import com.cvilia.netease.framework.BasePresenter;
-import com.cvilia.netease.mvp.m.LocalMusicContact;
+import com.cvilia.netease.mvp.c.LocalMusicContact;
 import com.cvilia.netease.sqlmodel.LocalMusic;
 import com.cvilia.netease.utils.ScanMusicUtil;
 
