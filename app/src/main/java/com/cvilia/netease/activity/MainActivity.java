@@ -14,7 +14,7 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.cvilia.netease.R;
 import com.cvilia.netease.adapter.ViewPagerAdapter;
 import com.cvilia.netease.config.PageUrlConfig;
-import com.cvilia.netease.mvp.m.MainContact;
+import com.cvilia.netease.mvp.c.MainContact;
 import com.cvilia.netease.databinding.ActivityMainBinding;
 import com.cvilia.netease.fragment.CloudFragment;
 import com.cvilia.netease.fragment.DiscoverFragment;

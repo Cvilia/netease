@@ -3,8 +3,8 @@ package com.cvilia.netease.mvp.p;
 import android.util.Log;
 
 import com.cvilia.netease.NeteaseApplication;
-import com.cvilia.netease.mvp.m.LoginContact;
-import com.cvilia.netease.databean.User;
+import com.cvilia.netease.mvp.c.LoginContact;
+import com.cvilia.netease.bean.User;
 import com.cvilia.netease.framework.BasePresenter;
 import com.cvilia.netease.net.NetSubscribe;
 import com.cvilia.netease.net.RetrofitUtils;
@@ -29,10 +29,8 @@ public class LoginPresenter extends BasePresenter<LoginContact.View> implements 
                 .subscribe(new NetSubscribe<User>() {
                     @Override
                     public void onNext(@NonNull User user) {
-                        if (user != null) {
-                            mView.loginSuccess(user);
-                            NeteaseApplication.app.setUser(user);
-                        }
+                        mView.loginSuccess(user);
+                        NeteaseApplication.app.setUser(user);
                     }
 
                     @Override

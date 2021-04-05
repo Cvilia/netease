@@ -3,6 +3,8 @@ package com.cvilia.netease.sqlmodel;
 
 import androidx.annotation.NonNull;
 
+import java.io.Serializable;
+
 import io.objectbox.annotation.Entity;
 import io.objectbox.annotation.Id;
 
@@ -12,7 +14,7 @@ import io.objectbox.annotation.Id;
  * describe：本地音乐实体类
  */
 @Entity
-public class LocalMusic {
+public class LocalMusic implements Serializable {
     @Id
     private long id;
     private String path;//音乐路径
@@ -29,6 +31,7 @@ public class LocalMusic {
     private boolean isLocal;//是否是本地文件 true = 是 false = 在线
     private String folder;//用于创建本地歌单
     private long recentPlayTime;//最近播放时间
+    private boolean isShow;//表示是否显示在列表中（如果用户手动删除则置为false）
 
 
     public long getId() {
@@ -127,14 +130,6 @@ public class LocalMusic {
         this.type = type;
     }
 
-    public boolean getIsLocal() {
-        return isLocal;
-    }
-
-    public void setIsLocal(boolean isLocal) {
-        this.isLocal = isLocal;
-    }
-
     public String getFolder() {
         return folder;
     }
@@ -151,4 +146,19 @@ public class LocalMusic {
         this.recentPlayTime = recentPlayTime;
     }
 
+    public boolean isLocal() {
+        return isLocal;
+    }
+
+    public void setLocal(boolean local) {
+        isLocal = local;
+    }
+
+    public boolean isShow() {
+        return isShow;
+    }
+
+    public void setShow(boolean show) {
+        isShow = show;
+    }
 }
