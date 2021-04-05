@@ -1,0 +1,132 @@
+{
+  "_note1": "KEEP THIS FILE! Check it into a version control system (VCS) like git.",
+  "_note2": "ObjectBox manages crucial IDs for your object model. See docs for details.",
+  "_note3": "If you have VCS merge conflicts, you must resolve them according to ObjectBox docs.",
+  "entities": [
+    {
+      "id": "1:4718652946440472080",
+      "lastPropertyId": "2:3604665030805471681",
+      "name": "User",
+      "properties": [
+        {
+          "id": "1:4412259717376361878",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:3604665030805471681",
+          "name": "name",
+          "type": 9
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "2:5299047287334583938",
+      "lastPropertyId": "16:2170724496071270646",
+      "name": "LocalMusic",
+      "properties": [
+        {
+          "id": "1:8893298362766842995",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:4744517887081357033",
+          "name": "path",
+          "type": 9
+        },
+        {
+          "id": "3:7339128429451361540",
+          "name": "name",
+          "type": 9
+        },
+        {
+          "id": "4:5455683589466875647",
+          "name": "size",
+          "type": 6,
+          "flags": 4
+        },
+        {
+          "id": "5:4778619042935031769",
+          "name": "duration",
+          "type": 6,
+          "flags": 4
+        },
+        {
+          "id": "6:7478884634215801062",
+          "name": "isFavorite",
+          "type": 1,
+          "flags": 4
+        },
+        {
+          "id": "7:22241523296672668",
+          "name": "artist",
+          "type": 9
+        },
+        {
+          "id": "8:7066635439018324440",
+          "name": "album",
+          "type": 9
+        },
+        {
+          "id": "9:721124465321966449",
+          "name": "albumCover",
+          "type": 9
+        },
+        {
+          "id": "10:3913843225397128987",
+          "name": "playTimes",
+          "type": 9
+        },
+        {
+          "id": "11:8327113074626112489",
+          "name": "addTime",
+          "type": 9
+        },
+        {
+          "id": "12:6903918918165307715",
+          "name": "type",
+          "type": 9
+        },
+        {
+          "id": "13:6078288226222872027",
+          "name": "isLocal",
+          "type": 1,
+          "flags": 4
+        },
+        {
+          "id": "14:749703634972031595",
+          "name": "folder",
+          "type": 9
+        },
+        {
+          "id": "15:2554364507224760894",
+          "name": "recentPlayTime",
+          "type": 6,
+          "flags": 4
+        },
+        {
+          "id": "16:2170724496071270646",
+          "name": "isShow",
+          "type": 1,
+          "flags": 4
+        }
+      ],
+      "relations": []
+    }
+  ],
+  "lastEntityId": "2:5299047287334583938",
+  "lastIndexId": "0:0",
+  "lastRelationId": "0:0",
+  "lastSequenceId": "0:0",
+  "modelVersion": 5,
+  "modelVersionParserMinimum": 5,
+  "retiredEntityUids": [],
+  "retiredIndexUids": [],
+  "retiredPropertyUids": [],
+  "retiredRelationUids": [],
+  "version": 1
+}
