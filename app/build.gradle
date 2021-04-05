@@ -88,12 +88,12 @@ dependencies {
     implementation 'com.google.android.exoplayer:exoplayer:2.13.2'
 
 //    banner
-    implementation 'com.github.zhpanvip:BannerViewPager:2.1.0'
+//    implementation 'com.github.zhpanvip:BannerViewPager:2.1.0'
     implementation 'com.youth.banner:banner:2.1.0'
 
 //    java 实体类免于写Getter Setter
-//    compileOnly 'org.projectlombok:lombok:1.18.16'
-//    annotationProcessor 'org.projectlombok:lombok:1.18.16'
+    implementation 'org.projectlombok:lombok:1.18.16'
+    annotationProcessor 'org.projectlombok:lombok:1.18.16'
 //
 //    testCompileOnly 'org.projectlombok:lombok:1.18.16'
 //    testAnnotationProcessor 'org.projectlombok:lombok:1.18.16'

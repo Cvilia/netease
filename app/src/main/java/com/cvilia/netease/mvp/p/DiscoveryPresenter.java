@@ -2,13 +2,11 @@ package com.cvilia.netease.mvp.p;
 
 import android.util.Log;
 
-import com.cvilia.netease.entity.Banner;
+import com.cvilia.netease.entity.BannerEntity;
 import com.cvilia.netease.framework.BasePresenter;
 import com.cvilia.netease.mvp.c.DiscoverContact;
 import com.cvilia.netease.net.NetSubscribe;
 import com.cvilia.netease.net.RetrofitUtils;
-
-import java.util.List;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.annotations.NonNull;
@@ -27,9 +25,9 @@ public class DiscoveryPresenter extends BasePresenter<DiscoverContact.View> impl
                 .getBanners()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new NetSubscribe<Banner>() {
+                .subscribe(new NetSubscribe<BannerEntity>() {
                     @Override
-                    public void onNext(@NonNull Banner banner) {
+                    public void onNext(@NonNull BannerEntity banner) {
                         Log.d("DiscoverFragment", banner.getCode() + "\n" + banner.toString());
                         if (banner.getCode()==200&&banner.getBanners()!=null&&banner.getBanners().size()>0){
                             mView.getBannerSuccess(banner.getBanners());

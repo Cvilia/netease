@@ -30,4 +30,9 @@
     <string name="discover">发现</string>
     <string name="cloud">云村</string>
     <string name="video">视频</string>
+    <string name="discovery_recommend_day">每日推荐</string>
+    <string name="discovery_privacy_fm">私人FM</string>
+    <string name="discovery_song_list">歌单</string>
+    <string name="discovery_rank">排行榜</string>
+    <string name="discovery_num_album">数字专辑</string>
 </resources>

@@ -1,9 +1,7 @@
 package com.cvilia.netease.net;
 
 import com.cvilia.netease.bean.User;
-import com.cvilia.netease.entity.Banner;
-
-import java.util.List;
+import com.cvilia.netease.entity.BannerEntity;
 
 import io.reactivex.rxjava3.core.Observable;
 import retrofit2.http.GET;
@@ -44,6 +42,6 @@ public interface ApiService {
      * @return banners
      */
     @GET("/banner")
-    Observable<Banner> getBanners();
+    Observable<BannerEntity> getBanners();
 
 }

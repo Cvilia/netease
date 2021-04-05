@@ -4,13 +4,12 @@ import android.util.Log;
 
 import com.cvilia.netease.NeteaseApplication;
 import com.cvilia.netease.bean.User;
-import com.cvilia.netease.entity.Banner;
+import com.cvilia.netease.entity.BannerEntity;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import io.reactivex.rxjava3.core.Observable;
@@ -143,7 +142,7 @@ public class RetrofitUtils {
         return api.loginByEmail(email, password);
     }
 
-    public Observable<Banner> getBanners() {
+    public Observable<BannerEntity> getBanners() {
         return api.getBanners();
     }
 }

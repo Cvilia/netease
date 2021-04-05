@@ -1,10 +1,11 @@
 package com.cvilia.netease.mvp.c;
 
-import com.cvilia.netease.entity.Banner;
 import com.cvilia.netease.framework.IPresenter;
 import com.cvilia.netease.framework.IView;
 
 import java.util.List;
+
+import static com.cvilia.netease.entity.BannerEntity.BannersBean;
 
 /**
  * author: lzy
@@ -19,7 +20,7 @@ public class DiscoverContact {
     }
 
     public interface View extends IView {
-        void getBannerSuccess(List<Banner.BannersBean> bean);
+        void getBannerSuccess(List<BannersBean> bean);
 
         void getBannerFail();
 

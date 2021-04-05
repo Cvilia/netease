@@ -6,7 +6,8 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NET_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         tools:ignore="ScopedStorage" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- 播放界面防止屏幕休眠 -->
     <uses-permission android:name="android.permission.WAKE_LOCK" />
@@ -21,10 +22,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
         tools:targetApi="n">
+        <activity android:name=".activity.discovery.RecommendPerDayActivity"></activity>
+
         <service
             android:name=".service.MediaPLayerService"
             android:enabled="true"
-            android:exported="true"/>
+            android:exported="true" />
 
         <activity android:name=".activity.LocalMusicActivity" />
         <activity android:name=".activity.LoginActivity" />
