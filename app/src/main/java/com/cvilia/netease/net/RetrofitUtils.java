@@ -5,6 +5,7 @@ import android.util.Log;
 import com.cvilia.netease.NeteaseApplication;
 import com.cvilia.netease.bean.User;
 import com.cvilia.netease.entity.BannerEntity;
+import com.cvilia.netease.entity.RecommendPerDayEntity;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -144,5 +145,9 @@ public class RetrofitUtils {
 
     public Observable<BannerEntity> getBanners() {
         return api.getBanners();
+    }
+
+    public Observable<RecommendPerDayEntity> getRecommendSongs() {
+        return api.getRecommendSongs();
     }
 }

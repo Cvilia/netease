@@ -17,7 +17,6 @@ import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
 import com.cvilia.netease.R;
-import com.cvilia.netease.entity.BannerEntity;
 import com.cvilia.netease.entity.BannerEntity.BannersBean;
 import com.cvilia.netease.utils.DimenUtil;
 import com.youth.banner.adapter.BannerAdapter;

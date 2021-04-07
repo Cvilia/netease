@@ -5,9 +5,12 @@ import android.view.View;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.cvilia.netease.config.PageUrlConfig;
 import com.cvilia.netease.databinding.ActivityRecommendPerdayBinding;
+import com.cvilia.netease.entity.RecommendPerDayEntity;
 import com.cvilia.netease.framework.BaseActivity;
 import com.cvilia.netease.mvp.c.RecommendPerDayContact;
 import com.cvilia.netease.mvp.p.RecommendPerDayPresenter;
+
+import java.util.List;
 
 @Route(path = PageUrlConfig.RECOMMEND_PER_DAY)
 public class RecommendPerDayActivity extends BaseActivity<RecommendPerDayPresenter> implements RecommendPerDayContact.View {
@@ -32,7 +35,7 @@ public class RecommendPerDayActivity extends BaseActivity<RecommendPerDayPresent
 
     @Override
     protected void initData() {
-
+        mPresenter.getRecommendSongs();
     }
 
     @Override
@@ -47,6 +50,16 @@ public class RecommendPerDayActivity extends BaseActivity<RecommendPerDayPresent
 
     @Override
     public void dismissLoading() {
+
+    }
+
+    @Override
+    public void getRecommendSuccess(List<RecommendPerDayEntity> songs) {
+
+    }
+
+    @Override
+    public void getRecommendFailed() {
 
     }
 }

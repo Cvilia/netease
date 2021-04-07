@@ -1,7 +1,10 @@
 package com.cvilia.netease.mvp.c;
 
+import com.cvilia.netease.entity.RecommendPerDayEntity;
 import com.cvilia.netease.framework.IPresenter;
 import com.cvilia.netease.framework.IView;
+
+import java.util.List;
 
 /**
  * created by: cvilia
@@ -11,10 +14,12 @@ import com.cvilia.netease.framework.IView;
  */
 public class RecommendPerDayContact {
     public interface Presenter extends IPresenter<View> {
-
+        void getRecommendSongs();
     }
 
     public interface View extends IView {
+        void getRecommendSuccess(List<RecommendPerDayEntity> songs);
 
+        void getRecommendFailed();
     }
 }
