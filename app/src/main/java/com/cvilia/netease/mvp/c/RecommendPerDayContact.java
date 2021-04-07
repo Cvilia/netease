@@ -18,7 +18,7 @@ public class RecommendPerDayContact {
     }
 
     public interface View extends IView {
-        void getRecommendSuccess(List<RecommendPerDayEntity> songs);
+        void getRecommendSuccess(RecommendPerDayEntity songs);
 
         void getRecommendFailed();
     }

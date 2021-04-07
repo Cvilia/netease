@@ -23,8 +23,10 @@ public class RecommendPerDayPresenter extends BasePresenter<RecommendPerDayConta
         RetrofitUtils.getInstance().getRecommendSongs().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new NetSubscribe<RecommendPerDayEntity>() {
                     @Override
-                    public void onNext(@NonNull RecommendPerDayEntity recommendPerDayEntity) {
-
+                    public void onNext(@NonNull RecommendPerDayEntity entity) {
+                        if (entity.getCode() == 200) {
+                            mView.getRecommendSuccess(entity);
+                        }
                     }
 
                     @Override
