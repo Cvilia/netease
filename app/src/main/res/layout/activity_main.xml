@@ -5,7 +5,8 @@
     android:id="@+id/rootDrawer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.MainActivity">
+    tools:context=".activity.MainActivity"
+    android:fitsSystemWindows="true">
 
     <!--        android:fitsSystemWindows="true"  如果不添加这个属性布局就会冲到状态栏里面去
     看起来actionbar设置垂直居中就没有效果了-->

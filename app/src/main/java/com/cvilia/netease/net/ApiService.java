@@ -6,6 +6,7 @@ import com.cvilia.netease.entity.RecommendPerDayEntity;
 
 import io.reactivex.rxjava3.core.Observable;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.Query;
 
 /**
@@ -40,12 +41,13 @@ public interface ApiService {
 
     /**
      * 获取 banner
+     *
      * @return banners
      */
     @GET("/banner")
     Observable<BannerEntity> getBanners();
 
-    @GET("/recommend/songs")
+    @POST("/recommend/songs")
     Observable<RecommendPerDayEntity> getRecommendSongs();
 
 }

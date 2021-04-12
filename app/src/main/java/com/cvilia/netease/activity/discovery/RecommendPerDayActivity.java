@@ -1,8 +1,11 @@
 package com.cvilia.netease.activity.discovery;
 
+import android.graphics.Rect;
 import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.cvilia.netease.adapter.RecommendSongsPerDayAdapter;
@@ -12,6 +15,7 @@ import com.cvilia.netease.entity.RecommendPerDayEntity;
 import com.cvilia.netease.framework.BaseActivity;
 import com.cvilia.netease.mvp.c.RecommendPerDayContact;
 import com.cvilia.netease.mvp.p.RecommendPerDayPresenter;
+import com.cvilia.netease.utils.DimenUtil;
 
 import java.util.List;
 
@@ -25,6 +29,14 @@ public class RecommendPerDayActivity extends BaseActivity<RecommendPerDayPresent
     protected void onViewCreated() {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         mViewBind.recyclerView.setLayoutManager(linearLayoutManager);
+        mViewBind.recyclerView.addItemDecoration(new RecyclerView.ItemDecoration() {
+            @Override
+            public void getItemOffsets(@NonNull Rect outRect, @NonNull View view, @NonNull RecyclerView parent, @NonNull RecyclerView.State state) {
+                super.getItemOffsets(outRect, view, parent, state);
+                outRect.top = DimenUtil.dp2px(RecommendPerDayActivity.this, 8);
+                outRect.bottom = DimenUtil.dp2px(RecommendPerDayActivity.this, 8);
+            }
+        });
     }
 
     @Override
@@ -36,6 +48,11 @@ public class RecommendPerDayActivity extends BaseActivity<RecommendPerDayPresent
     @Override
     protected void initWidgetEvent() {
 
+    }
+
+    @Override
+    protected boolean transparentStatusBar() {
+        return super.transparentStatusBar();
     }
 
     @Override
@@ -60,7 +77,7 @@ public class RecommendPerDayActivity extends BaseActivity<RecommendPerDayPresent
 
     @Override
     public void getRecommendSuccess(RecommendPerDayEntity entity) {
-        adapter = new RecommendSongsPerDayAdapter(entity.getData().getDailySongs(),this);
+        adapter = new RecommendSongsPerDayAdapter(entity.getData().getDailySongs(), this);
         mViewBind.recyclerView.setAdapter(adapter);
     }
 

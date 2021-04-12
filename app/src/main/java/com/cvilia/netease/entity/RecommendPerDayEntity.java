@@ -81,7 +81,7 @@ public class RecommendPerDayEntity {
             private HBean h;
             private MBean m;
             private LBean l;
-            private int mark;
+            private long mark;
             private int originCoverType;
             private OriginSongSimpleDataBean originSongSimpleData;
             private String reason;
@@ -158,11 +158,11 @@ public class RecommendPerDayEntity {
                 this.l = l;
             }
 
-            public int getMark() {
+            public long getMark() {
                 return mark;
             }
 
-            public void setMark(int mark) {
+            public void setMark(long mark) {
                 this.mark = mark;
             }
 
