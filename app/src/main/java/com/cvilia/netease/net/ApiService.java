@@ -3,6 +3,7 @@ package com.cvilia.netease.net;
 import com.cvilia.netease.bean.User;
 import com.cvilia.netease.entity.BannerEntity;
 import com.cvilia.netease.entity.RecommendPerDayEntity;
+import com.cvilia.netease.entity.RefreshLoginEntity;
 
 import io.reactivex.rxjava3.core.Observable;
 import retrofit2.http.GET;
@@ -38,6 +39,12 @@ public interface ApiService {
     @GET("/login")
     Observable<User> loginByEmail(@Query("email") String email, @Query("md5_password") String password);
 
+    /**
+     * 刷新登录
+     *
+     */
+    @GET("/login/refresh")
+    Observable<RefreshLoginEntity> refreshLogin();
 
     /**
      * 获取 banner
@@ -47,7 +54,7 @@ public interface ApiService {
     @GET("/banner")
     Observable<BannerEntity> getBanners();
 
-    @POST("/recommend/songs")
-    Observable<RecommendPerDayEntity> getRecommendSongs();
+    @GET("/recommend/songs")
+    Observable<RecommendPerDayEntity> getRecommendSongs(@Query("cookie")String cookie);
 
 }

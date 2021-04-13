@@ -1,11 +1,12 @@
 package com.cvilia.netease.mvp.p;
 
+import com.cvilia.netease.config.Constants;
 import com.cvilia.netease.entity.RecommendPerDayEntity;
 import com.cvilia.netease.framework.BasePresenter;
 import com.cvilia.netease.mvp.c.RecommendPerDayContact;
-import com.cvilia.netease.net.ApiService;
 import com.cvilia.netease.net.NetSubscribe;
 import com.cvilia.netease.net.RetrofitUtils;
+import com.cvilia.netease.sp.MMKVUtil;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.annotations.NonNull;
@@ -20,7 +21,7 @@ import io.reactivex.rxjava3.schedulers.Schedulers;
 public class RecommendPerDayPresenter extends BasePresenter<RecommendPerDayContact.View> implements RecommendPerDayContact.Presenter {
     @Override
     public void getRecommendSongs() {
-        RetrofitUtils.getInstance().getRecommendSongs().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+        RetrofitUtils.getInstance().getRecommendSongs(MMKVUtil.getString(Constants.USER_COOKIE)).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new NetSubscribe<RecommendPerDayEntity>() {
                     @Override
                     public void onNext(@NonNull RecommendPerDayEntity entity) {
@@ -34,5 +35,6 @@ public class RecommendPerDayPresenter extends BasePresenter<RecommendPerDayConta
                         super.onError(e);
                     }
                 });
+
     }
 }

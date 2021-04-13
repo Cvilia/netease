@@ -41,7 +41,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
 
     @Override
     protected void onViewCreated() {
-
+//        mPresenter.refreshLogin();
     }
 
     @Override

@@ -12,6 +12,7 @@ public class MainContact {
 
     public interface Presenter extends IPresenter<View>{
         void show();
+        void refreshLogin();
     }
 
     public interface View extends IView{
