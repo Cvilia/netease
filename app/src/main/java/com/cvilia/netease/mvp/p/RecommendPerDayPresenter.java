@@ -1,7 +1,7 @@
 package com.cvilia.netease.mvp.p;
 
 import com.cvilia.netease.config.Constants;
-import com.cvilia.netease.entity.RecommendPerDayEntity;
+import com.cvilia.netease.entity.DayRecommendEntity;
 import com.cvilia.netease.framework.BasePresenter;
 import com.cvilia.netease.mvp.c.RecommendPerDayContact;
 import com.cvilia.netease.net.NetSubscribe;
@@ -22,9 +22,9 @@ public class RecommendPerDayPresenter extends BasePresenter<RecommendPerDayConta
     @Override
     public void getRecommendSongs() {
         RetrofitUtils.getInstance().getRecommendSongs(MMKVUtil.getString(Constants.USER_COOKIE)).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new NetSubscribe<RecommendPerDayEntity>() {
+                .subscribe(new NetSubscribe<DayRecommendEntity>() {
                     @Override
-                    public void onNext(@NonNull RecommendPerDayEntity entity) {
+                    public void onNext(@NonNull DayRecommendEntity entity) {
                         if (entity.getCode() == 200) {
                             mView.getRecommendSuccess(entity);
                         }

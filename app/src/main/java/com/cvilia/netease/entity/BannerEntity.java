@@ -1,5 +1,7 @@
 package com.cvilia.netease.entity;
 
+import com.cvilia.netease.framework.BubbleEntity;
+
 import java.util.List;
 
 /**
@@ -8,7 +10,7 @@ import java.util.List;
  * date: 2021-04-05-21:59
  * describe:
  */
-public class BannerEntity {
+public class BannerEntity implements BubbleEntity {
     /**
      * banners : [{"imageUrl":"http://p1.music.126.net/xoHr5sKAzH5vrMySSI46Xg==/109951165854321664.jpg","targetId":183261314123456787,"adid":"","targetType":1,"titleColor":"red","typeTitle":"独家","url":"","exclusive":false,"encodeId":"1832613147","scm":"1.music-homepage.homepage_banner_force.banner.2772058.483281937.null"}]
      * code : 200

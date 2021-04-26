@@ -2,12 +2,11 @@ package com.cvilia.netease.net;
 
 import com.cvilia.netease.bean.User;
 import com.cvilia.netease.entity.BannerEntity;
-import com.cvilia.netease.entity.RecommendPerDayEntity;
+import com.cvilia.netease.entity.DayRecommendEntity;
 import com.cvilia.netease.entity.RefreshLoginEntity;
 
 import io.reactivex.rxjava3.core.Observable;
 import retrofit2.http.GET;
-import retrofit2.http.POST;
 import retrofit2.http.Query;
 
 /**
@@ -55,6 +54,6 @@ public interface ApiService {
     Observable<BannerEntity> getBanners();
 
     @GET("/recommend/songs")
-    Observable<RecommendPerDayEntity> getRecommendSongs(@Query("cookie")String cookie);
+    Observable<DayRecommendEntity> getRecommendSongs(@Query("cookie")String cookie);
 
 }

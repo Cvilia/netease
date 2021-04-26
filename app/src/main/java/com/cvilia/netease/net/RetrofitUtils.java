@@ -5,7 +5,7 @@ import android.util.Log;
 import com.cvilia.netease.NeteaseApplication;
 import com.cvilia.netease.bean.User;
 import com.cvilia.netease.entity.BannerEntity;
-import com.cvilia.netease.entity.RecommendPerDayEntity;
+import com.cvilia.netease.entity.DayRecommendEntity;
 import com.cvilia.netease.entity.RefreshLoginEntity;
 
 import org.jetbrains.annotations.NotNull;
@@ -148,7 +148,7 @@ public class RetrofitUtils {
         return api.getBanners();
     }
 
-    public Observable<RecommendPerDayEntity> getRecommendSongs(String cookie) {
+    public Observable<DayRecommendEntity> getRecommendSongs(String cookie) {
         return api.getRecommendSongs(cookie);
     }
     public Observable<RefreshLoginEntity> refreshLogin() {

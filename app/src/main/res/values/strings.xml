@@ -35,4 +35,5 @@
     <string name="discovery_song_list">歌单</string>
     <string name="discovery_rank">排行榜</string>
     <string name="discovery_num_album">数字专辑</string>
+    <string name="play_all_songs">播放全部</string>
 </resources>

@@ -1,6 +1,8 @@
 package com.cvilia.netease.activity.discovery;
 
+import android.content.Context;
 import android.graphics.Rect;
+import android.view.LayoutInflater;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -8,16 +10,15 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.cvilia.netease.R;
 import com.cvilia.netease.adapter.RecommendSongsPerDayAdapter;
 import com.cvilia.netease.config.PageUrlConfig;
 import com.cvilia.netease.databinding.ActivityRecommendPerdayBinding;
-import com.cvilia.netease.entity.RecommendPerDayEntity;
+import com.cvilia.netease.entity.DayRecommendEntity;
 import com.cvilia.netease.framework.BaseActivity;
 import com.cvilia.netease.mvp.c.RecommendPerDayContact;
 import com.cvilia.netease.mvp.p.RecommendPerDayPresenter;
 import com.cvilia.netease.utils.DimenUtil;
-
-import java.util.List;
 
 @Route(path = PageUrlConfig.RECOMMEND_PER_DAY)
 public class RecommendPerDayActivity extends BaseActivity<RecommendPerDayPresenter> implements RecommendPerDayContact.View {
@@ -76,9 +77,11 @@ public class RecommendPerDayActivity extends BaseActivity<RecommendPerDayPresent
     }
 
     @Override
-    public void getRecommendSuccess(RecommendPerDayEntity entity) {
+    public void getRecommendSuccess(DayRecommendEntity entity) {
         adapter = new RecommendSongsPerDayAdapter(entity.getData().getDailySongs(), this);
         mViewBind.recyclerView.setAdapter(adapter);
+        View header = LayoutInflater.from(this).inflate(R.layout.activity_recommend_list_header, null, true);
+        adapter.addHeaderView(header);
     }
 
     @Override

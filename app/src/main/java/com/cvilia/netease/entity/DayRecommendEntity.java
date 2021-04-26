@@ -1,5 +1,7 @@
 package com.cvilia.netease.entity;
 
+import com.cvilia.netease.framework.BubbleEntity;
+
 import java.util.List;
 
 /**
@@ -9,7 +11,7 @@ import java.util.List;
  * describe: 每日推荐歌曲实体类
  */
 
-public class RecommendPerDayEntity {
+public class DayRecommendEntity implements BubbleEntity {
 
     /**
      * code : 200

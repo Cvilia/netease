@@ -12,7 +12,7 @@ import com.bumptech.glide.request.RequestOptions;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.viewholder.BaseViewHolder;
 import com.cvilia.netease.R;
-import com.cvilia.netease.entity.RecommendPerDayEntity.DataBean.DailySongsBean;
+import com.cvilia.netease.entity.DayRecommendEntity.DataBean.DailySongsBean;
 import com.cvilia.netease.utils.DimenUtil;
 
 import org.jetbrains.annotations.NotNull;
@@ -20,6 +20,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.lang.ref.WeakReference;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * created by: cvilia
@@ -37,7 +38,7 @@ public class RecommendSongsPerDayAdapter extends BaseQuickAdapter<DailySongsBean
         super(R.layout.recommend_songs_item_layout, data);
         weak = new WeakReference<>((Activity) context);
         activity = weak.get();
-        options = RequestOptions.bitmapTransform(new MultiTransformation(new CenterCrop(), new RoundedCorners(DimenUtil.dp2px(activity, 5))));
+        options = RequestOptions.bitmapTransform(new MultiTransformation<>(new CenterCrop(), new RoundedCorners(DimenUtil.dp2px(activity, 5))));
     }
 
     @Override
@@ -52,6 +53,6 @@ public class RecommendSongsPerDayAdapter extends BaseQuickAdapter<DailySongsBean
         }
         singer = singer + "--" + bean.getAl().getName();
         holder.setText(R.id.singerName, singer);
-        Glide.with(activity).applyDefaultRequestOptions(options).load(bean.getAl().getPicUrl()).into((ImageView) holder.findView(R.id.songImg));
+        Glide.with(activity).applyDefaultRequestOptions(options).load(bean.getAl().getPicUrl()).into((ImageView) Objects.requireNonNull(holder.findView(R.id.songImg)));
     }
 }

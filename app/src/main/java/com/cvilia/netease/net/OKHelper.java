@@ -52,7 +52,7 @@ public class OKHelper {
     // GET方法
     public void get(String url, HashMap<String, String> param, MyCallback callback) {
         if (!param.isEmpty()) {
-            StringBuffer buffer = new StringBuffer(url);
+            StringBuilder buffer = new StringBuilder(url);
             buffer.append('?');
             for (Map.Entry<String, String> entry : param.entrySet()) {
                 buffer.append(entry.getKey());
