@@ -3,10 +3,10 @@ package com.cvilia.netease.net;
 import android.util.Log;
 
 import com.cvilia.netease.NeteaseApplication;
-import com.cvilia.netease.bean.User;
-import com.cvilia.netease.entity.BannerEntity;
-import com.cvilia.netease.entity.DayRecommendEntity;
-import com.cvilia.netease.entity.RefreshLoginEntity;
+import com.cvilia.netease.bean.BannerEntity;
+import com.cvilia.netease.bean.DayRecommendEntity;
+import com.cvilia.netease.bean.RefreshLoginEntity;
+import com.cvilia.netease.bean.login.UserLoginBean;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -136,11 +136,11 @@ public class RetrofitUtils {
     };
 
 
-    public Observable<User> loginByPhone(String phone, String password) {
+    public Observable<UserLoginBean> loginByPhone(String phone, String password) {
         return api.loginByPhone(phone, password);
     }
 
-    public Observable<User> loginByEmail(String email, String password) {
+    public Observable<UserLoginBean> loginByEmail(String email, String password) {
         return api.loginByEmail(email, password);
     }
 

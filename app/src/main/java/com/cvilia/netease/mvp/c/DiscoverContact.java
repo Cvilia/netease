@@ -5,7 +5,7 @@ import com.cvilia.netease.framework.IView;
 
 import java.util.List;
 
-import static com.cvilia.netease.entity.BannerEntity.BannersBean;
+import static com.cvilia.netease.bean.BannerEntity.BannersBean;
 
 /**
  * author: lzy

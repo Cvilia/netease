@@ -2,7 +2,7 @@ package com.cvilia.netease.mvp.p;
 
 import android.util.Log;
 
-import com.cvilia.netease.entity.BannerEntity;
+import com.cvilia.netease.bean.BannerEntity;
 import com.cvilia.netease.framework.BasePresenter;
 import com.cvilia.netease.mvp.c.DiscoverContact;
 import com.cvilia.netease.net.NetSubscribe;

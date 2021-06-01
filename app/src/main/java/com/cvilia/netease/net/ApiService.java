@@ -1,9 +1,9 @@
 package com.cvilia.netease.net;
 
-import com.cvilia.netease.bean.User;
-import com.cvilia.netease.entity.BannerEntity;
-import com.cvilia.netease.entity.DayRecommendEntity;
-import com.cvilia.netease.entity.RefreshLoginEntity;
+import com.cvilia.netease.bean.BannerEntity;
+import com.cvilia.netease.bean.DayRecommendEntity;
+import com.cvilia.netease.bean.RefreshLoginEntity;
+import com.cvilia.netease.bean.login.UserLoginBean;
 
 import io.reactivex.rxjava3.core.Observable;
 import retrofit2.http.GET;
@@ -26,7 +26,7 @@ public interface ApiService {
      * @return 登录信息
      */
     @GET("/login/cellphone")
-    Observable<User> loginByPhone(@Query("phone") String phone, @Query("md5_password") String password);
+    Observable<UserLoginBean> loginByPhone(@Query("phone") String phone, @Query("md5_password") String password);
 
     /**
      * 邮箱登录
@@ -36,7 +36,7 @@ public interface ApiService {
      * @return 登录信息
      */
     @GET("/login")
-    Observable<User> loginByEmail(@Query("email") String email, @Query("md5_password") String password);
+    Observable<UserLoginBean> loginByEmail(@Query("email") String email, @Query("md5_password") String password);
 
     /**
      * 刷新登录

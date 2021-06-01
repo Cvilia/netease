@@ -3,7 +3,6 @@ package com.cvilia.netease;
 import android.app.Application;
 
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.cvilia.netease.bean.User;
 import com.cvilia.netease.objectbox.ObjectBox;
 import com.tencent.mmkv.MMKV;
 
@@ -15,15 +14,6 @@ import com.tencent.mmkv.MMKV;
 public class NeteaseApplication extends Application {
 
     public static NeteaseApplication app;
-    public User user;
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
 
     @Override
     public void onCreate() {

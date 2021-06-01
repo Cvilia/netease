@@ -2,10 +2,8 @@ package com.cvilia.netease.mvp.p;
 
 import android.util.Log;
 
-import com.cvilia.netease.NeteaseApplication;
-import com.cvilia.netease.bean.User;
 import com.cvilia.netease.config.Constants;
-import com.cvilia.netease.entity.RefreshLoginEntity;
+import com.cvilia.netease.bean.login.UserLoginBean;
 import com.cvilia.netease.framework.BasePresenter;
 import com.cvilia.netease.mvp.c.MainContact;
 import com.cvilia.netease.net.NetSubscribe;
@@ -37,11 +35,9 @@ public class MainPresenter extends BasePresenter<MainContact.View> implements Ma
                     .loginByPhone(account, password)
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(new NetSubscribe<User>() {
+                    .subscribe(new NetSubscribe<UserLoginBean>() {
                         @Override
-                        public void onNext(@NonNull User user) {
-                            NeteaseApplication.app.setUser(user);
-                        }
+                        public void onNext(@NonNull UserLoginBean user) {}
 
                         @Override
                         public void onError(@NonNull Throwable e) {
@@ -54,11 +50,9 @@ public class MainPresenter extends BasePresenter<MainContact.View> implements Ma
                     .loginByEmail(account, password)
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(new NetSubscribe<User>() {
+                    .subscribe(new NetSubscribe<UserLoginBean>() {
                         @Override
-                        public void onNext(@NonNull User user) {
-                            NeteaseApplication.app.setUser(user);
-                        }
+                        public void onNext(@NonNull UserLoginBean user) {}
 
                         @Override
                         public void onError(@NonNull Throwable e) {

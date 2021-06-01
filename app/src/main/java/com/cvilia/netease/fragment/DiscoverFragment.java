@@ -6,7 +6,7 @@ import com.alibaba.android.arouter.launcher.ARouter;
 import com.cvilia.netease.adapter.DiscoveryBannerAdapter;
 import com.cvilia.netease.config.PageUrlConfig;
 import com.cvilia.netease.databinding.FragmentDiscoverLayoutBinding;
-import com.cvilia.netease.entity.BannerEntity.BannersBean;
+import com.cvilia.netease.bean.BannerEntity.BannersBean;
 import com.cvilia.netease.framework.BaseFragment;
 import com.cvilia.netease.mvp.c.DiscoverContact;
 import com.cvilia.netease.mvp.p.DiscoveryPresenter;

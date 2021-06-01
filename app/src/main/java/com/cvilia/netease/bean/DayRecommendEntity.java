@@ -1,4 +1,4 @@
-package com.cvilia.netease.entity;
+package com.cvilia.netease.bean;
 
 import com.cvilia.netease.framework.BubbleEntity;
 

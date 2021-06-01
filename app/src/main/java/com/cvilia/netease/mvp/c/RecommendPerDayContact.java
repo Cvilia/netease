@@ -1,6 +1,6 @@
 package com.cvilia.netease.mvp.c;
 
-import com.cvilia.netease.entity.DayRecommendEntity;
+import com.cvilia.netease.bean.DayRecommendEntity;
 import com.cvilia.netease.framework.IPresenter;
 import com.cvilia.netease.framework.IView;
 

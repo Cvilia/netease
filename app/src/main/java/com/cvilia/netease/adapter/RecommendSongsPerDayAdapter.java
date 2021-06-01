@@ -12,7 +12,7 @@ import com.bumptech.glide.request.RequestOptions;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.viewholder.BaseViewHolder;
 import com.cvilia.netease.R;
-import com.cvilia.netease.entity.DayRecommendEntity.DataBean.DailySongsBean;
+import com.cvilia.netease.bean.DayRecommendEntity.DataBean.DailySongsBean;
 import com.cvilia.netease.utils.DimenUtil;
 
 import org.jetbrains.annotations.NotNull;

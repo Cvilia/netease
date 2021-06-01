@@ -1,7 +1,7 @@
 package com.cvilia.netease.mvp.p;
 
 import com.cvilia.netease.config.Constants;
-import com.cvilia.netease.entity.DayRecommendEntity;
+import com.cvilia.netease.bean.DayRecommendEntity;
 import com.cvilia.netease.framework.BasePresenter;
 import com.cvilia.netease.mvp.c.RecommendPerDayContact;
 import com.cvilia.netease.net.NetSubscribe;
