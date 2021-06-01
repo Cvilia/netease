@@ -51,4 +51,25 @@
         <item name="android:paddingHorizontal">5dp</item>
     </style>
 
+<!--    DiscoveryFragment-->
+    <style name="DiscoveryItemRoot">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+    <style name="DiscoveryItemImgRoot">
+        <item name="android:layout_width">50dp</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:gravity">center</item>
+    </style>
+    <style name="DiscoveryItemTitle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/text_1d1d1d</item>
+        <item name="android:layout_marginTop">8dp</item>
+    </style>
+
 </resources>

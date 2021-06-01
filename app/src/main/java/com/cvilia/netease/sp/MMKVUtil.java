@@ -47,4 +47,17 @@ public class MMKVUtil {
         return init().decodeString(key,defaultValue);
     }
 
+    /**
+     * 存储int
+     */
+
+    public static void saveInt(String key,int value){
+        init().encode(key,value);
+    }
+
+
+    public static int getInt(String key){
+        return init().decodeInt(key);
+    }
+
 }

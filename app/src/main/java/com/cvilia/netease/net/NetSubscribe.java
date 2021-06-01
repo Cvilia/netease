@@ -1,6 +1,5 @@
 package com.cvilia.netease.net;
 
-import android.content.Context;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -46,7 +45,9 @@ public abstract class NetSubscribe<T> implements Observer<T> {
             errMsg = !TextUtils.isEmpty(e.getMessage()) ? e.getMessage() : "未知错误";
         }
 
-        Log.e(TAG, "onError msg=" + errMsg);
+        Log.e(TAG, "onError msg = " + e.getMessage());
+        Log.e(TAG, "onError msg = ");
+        e.printStackTrace();
         ToastUtil.showShort(errMsg);
     }
 }

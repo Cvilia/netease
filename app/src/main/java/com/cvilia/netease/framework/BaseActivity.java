@@ -34,7 +34,9 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getRootView());
-        StatusBarUtil.setLightMode(this);
+        if (transparentStatusBar()) {
+            StatusBarUtil.setTranslucent(this, 0);
+        }
         ARouter.getInstance().inject(this);
         ActivityManager.getInstance().addActivity(this);
         mPresenter = getPresenter();
@@ -48,6 +50,11 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
         onViewCreated();
         initWidgetEvent();
         initData();
+    }
+
+
+    protected boolean transparentStatusBar() {
+        return true;
     }
 
     /**
@@ -73,8 +80,7 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
         hideNavigator();
     }
 
-    protected void onViewCreated() {
-    }
+    protected abstract void onViewCreated();
 
     protected abstract View getRootView();
 

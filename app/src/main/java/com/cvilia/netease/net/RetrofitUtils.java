@@ -3,7 +3,10 @@ package com.cvilia.netease.net;
 import android.util.Log;
 
 import com.cvilia.netease.NeteaseApplication;
-import com.cvilia.netease.databean.User;
+import com.cvilia.netease.bean.User;
+import com.cvilia.netease.entity.BannerEntity;
+import com.cvilia.netease.entity.DayRecommendEntity;
+import com.cvilia.netease.entity.RefreshLoginEntity;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -141,4 +144,14 @@ public class RetrofitUtils {
         return api.loginByEmail(email, password);
     }
 
+    public Observable<BannerEntity> getBanners() {
+        return api.getBanners();
+    }
+
+    public Observable<DayRecommendEntity> getRecommendSongs(String cookie) {
+        return api.getRecommendSongs(cookie);
+    }
+    public Observable<RefreshLoginEntity> refreshLogin() {
+        return api.refreshLogin();
+    }
 }

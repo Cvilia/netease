@@ -24,5 +24,8 @@ public class PageUrlConfig {
 
     public static final String MAIN_PAGE = MAIN + "/mainActivity";
     public static final String SELECT_CITY_PAGE = MAIN + "/selectCityPage";
+    public static final String LOCAL_MUSIC_ACTIVITY = MAIN + "/localMusicActivity";
+
+    public static final String RECOMMEND_PER_DAY = MAIN_PAGE+"/recommendPerDayActivity";
 
 }
