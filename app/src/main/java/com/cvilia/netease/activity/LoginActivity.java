@@ -35,11 +35,6 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
     private ActivityLoginBinding mViewBind;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
-    @Override
     protected void initWidgetEvent() {
 
     }

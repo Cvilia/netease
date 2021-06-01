@@ -76,7 +76,7 @@ public class UserLoginBean implements INeteaseBean {
         this.cookie = cookie;
     }
 
-    public static class AccountBean {
+    public static class AccountBean implements INeteaseBean{
         private String id;
         private String userName;
         private int type;
@@ -205,7 +205,7 @@ public class UserLoginBean implements INeteaseBean {
         }
     }
 
-    public static class ProfileBean {
+    public static class ProfileBean implements INeteaseBean{
         private boolean followed;
         private String backgroundUrl;
         private String detailDescription;
@@ -433,7 +433,7 @@ public class UserLoginBean implements INeteaseBean {
         }
     }
 
-    public static class BindingsBean {
+    public static class BindingsBean implements INeteaseBean{
         private String refreshTime;
         private String url;
         private String userId;

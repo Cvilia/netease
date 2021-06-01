@@ -1,6 +1,7 @@
 package com.cvilia.netease.bean.login;
 
 import com.cvilia.netease.bean.INeteaseBean;
+import com.google.gson.annotations.SerializedName;
 
 /**
  * created by: cvilia
@@ -10,19 +11,21 @@ import com.cvilia.netease.bean.INeteaseBean;
  */
 public class BindQQ implements INeteaseBean {
 
-    private String access_token;
+    @SerializedName("access_token")
+    private String accessToken;
     private String unionid;
     private String openid;
     private String nickname;
     private String partnerType;
-    private long expires_in;
+    @SerializedName("expires_in")
+    private long expiresIn;
 
-    public String getAccess_token() {
-        return access_token;
+    public String getAccessToken() {
+        return accessToken;
     }
 
-    public void setAccess_token(String access_token) {
-        this.access_token = access_token;
+    public void setAccessToken(String accessToken) {
+        this.accessToken = accessToken;
     }
 
     public String getUnionid() {
@@ -57,11 +60,11 @@ public class BindQQ implements INeteaseBean {
         this.partnerType = partnerType;
     }
 
-    public long getExpires_in() {
-        return expires_in;
+    public long getExpiresIn() {
+        return expiresIn;
     }
 
-    public void setExpires_in(long expires_in) {
-        this.expires_in = expires_in;
+    public void setExpiresIn(long expiresIn) {
+        this.expiresIn = expiresIn;
     }
 }
