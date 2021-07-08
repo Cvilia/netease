@@ -1,6 +1,5 @@
 package com.cvilia.netease.activity.discovery;
 
-import android.content.Context;
 import android.graphics.Rect;
 import android.view.LayoutInflater;
 import android.view.View;

@@ -22,7 +22,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
         tools:targetApi="n">
-        <activity android:name=".activity.discovery.RecommendPerDayActivity"></activity>
+        <activity android:name=".activity.discovery.RecommendPerDayActivity"/>
 
         <service
             android:name=".service.MediaPLayerService"
