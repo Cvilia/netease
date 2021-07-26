@@ -18,7 +18,7 @@ public class ActivityManager {
     }
 
     private ActivityManager() {
-        activities = new Stack<Activity>();
+        activities = new Stack<>();
     }
 
     public static ActivityManager getInstance() {
@@ -26,7 +26,7 @@ public class ActivityManager {
     }
 
     public int getActivitySize() {
-        return activities != null ? activities.size() : 0;
+        return activities.size();
     }
 
     /**
@@ -39,7 +39,7 @@ public class ActivityManager {
     }
 
     public void removeActivity(Activity activity) {
-        if (activities != null && activities.size() > 0) {
+        if (activities.size() > 0) {
             if (activity != null) {
                 activities.remove(activity);
                 activity.finish();

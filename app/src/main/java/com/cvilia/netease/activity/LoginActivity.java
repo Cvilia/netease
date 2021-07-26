@@ -1,6 +1,5 @@
 package com.cvilia.netease.activity;
 
-import android.os.Bundle;
 import android.text.InputType;
 import android.text.TextUtils;
 import android.view.View;
@@ -12,12 +11,12 @@ import com.alibaba.android.arouter.facade.callback.NavCallback;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.cvilia.netease.R;
 import com.cvilia.netease.bean.login.UserLoginBean;
-import com.cvilia.netease.mvp.c.LoginContact;
 import com.cvilia.netease.component.ProgressDialog;
 import com.cvilia.netease.config.Constants;
 import com.cvilia.netease.config.PageUrlConfig;
 import com.cvilia.netease.databinding.ActivityLoginBinding;
 import com.cvilia.netease.framework.BaseActivity;
+import com.cvilia.netease.mvp.c.LoginContact;
 import com.cvilia.netease.mvp.p.LoginPresenter;
 import com.cvilia.netease.sp.MMKVUtil;
 import com.cvilia.netease.utils.Md5;

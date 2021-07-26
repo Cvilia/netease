@@ -25,7 +25,7 @@ import me.jessyan.autosize.internal.CustomAdapt;
  * date: 2020/9/29
  * describe：描述
  */
-public abstract class BaseActivity<T extends BasePresenter> extends AppCompatActivity implements CustomAdapt, IView {
+public abstract class BaseActivity<T extends BasePresenter> extends AppCompatActivity implements IView {
 
     protected T mPresenter;
     protected Activity mContext;
@@ -33,9 +33,10 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(getRootView());
         if (transparentStatusBar()) {
-            StatusBarUtil.setTranslucent(this, 0);
+            StatusBarUtil.setTranslucent(this);
         }
         ARouter.getInstance().inject(this);
         ActivityManager.getInstance().addActivity(this);
@@ -101,15 +102,5 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
             mPresenter.detachView();
         }
         ActivityManager.getInstance().removeActivity(this);
-    }
-
-    @Override
-    public boolean isBaseOnWidth() {
-        return true;
-    }
-
-    @Override
-    public float getSizeInDp() {
-        return 360;
     }
 }
