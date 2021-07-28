@@ -14,7 +14,8 @@
         app:layout_constraintBottom_toTopOf="@id/tabLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:overScrollMode="always"/>
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"
@@ -25,7 +26,7 @@
         app:layout_constraintTop_toBottomOf="@id/viewPager"
         app:tabBackground="@color/app_transparent"
         app:tabSelectedTextColor="@color/white"
-        app:tabTextColor="@color/text_7c7c7c"
+        app:tabTextColor="@color/text_afafaf"
         app:tabGravity="fill"
         app:tabIndicator="@null"
         app:tabMode="fixed"

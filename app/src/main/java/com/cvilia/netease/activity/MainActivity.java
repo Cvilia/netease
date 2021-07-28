@@ -1,38 +1,18 @@
 package com.cvilia.netease.activity;
 
-import android.graphics.Color;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.core.view.GravityCompat;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentPagerAdapter;
-import androidx.viewpager.widget.ViewPager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.cvilia.netease.R;
 import com.cvilia.netease.adapter.MainPagerAdapter;
-import com.cvilia.netease.adapter.ViewPagerAdapter;
 import com.cvilia.netease.config.PageUrlConfig;
-import com.cvilia.netease.mvp.c.MainContact;
 import com.cvilia.netease.databinding.ActivityMainBinding;
-import com.cvilia.netease.fragment.CloudFragment;
-import com.cvilia.netease.fragment.DiscoverFragment;
-import com.cvilia.netease.fragment.MyFragment;
 import com.cvilia.netease.framework.BaseActivity;
+import com.cvilia.netease.mvp.c.MainContact;
 import com.cvilia.netease.mvp.p.MainPresenter;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
-import com.jaeger.library.StatusBarUtil;
-
-import org.jetbrains.annotations.NotNull;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
 
 /**
  * 首页
@@ -43,11 +23,15 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
 
     private ActivityMainBinding mBinding;
     private static final String[] tabTitles = {"发现", "云村", "我的"};
-    private static final int[] tabImgs = {R.drawable.main_tab_img_discovery, R.drawable.main_tab_img_cloud, R.drawable.main_tab_img_my};
 
 
     @Override
-    protected void onViewCreated() {}
+    protected void onViewCreated() {
+        View child = mBinding.viewPager.getChildAt(0);
+        if(child instanceof RecyclerView){
+            child.setOverScrollMode(View.OVER_SCROLL_NEVER);
+        }
+    }
 
     @Override
     protected View getRootView() {
@@ -64,12 +48,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
     protected void initData() {
         mBinding.viewPager.setCurrentItem(0);
         mBinding.viewPager.setAdapter(new MainPagerAdapter(this));
-        new TabLayoutMediator(mBinding.tabLayout, mBinding.viewPager, true, new TabLayoutMediator.TabConfigurationStrategy() {
-            @Override
-            public void onConfigureTab(@NonNull @NotNull TabLayout.Tab tab, int position) {
-                tab.setText(tabTitles[position]);
-            }
-        }).attach();
+        new TabLayoutMediator(mBinding.tabLayout, mBinding.viewPager, true, (tab, position) -> tab.setText(tabTitles[position])).attach();
     }
 
     @Override

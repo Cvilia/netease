@@ -77,8 +77,7 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
-
-        hideNavigator();
+//        hideNavigator();
     }
 
     protected abstract void onViewCreated();

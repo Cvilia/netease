@@ -66,7 +66,6 @@ public class LauncherActivity extends AppCompatActivity implements View.OnClickL
             mViewBind.loginByEmailTv.setOnClickListener(this);
         }
         showPermissionDialog();
-
     }
 
     private void privacySpannable() {
