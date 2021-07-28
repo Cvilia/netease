@@ -37,6 +37,8 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
         setContentView(getRootView());
         if (transparentStatusBar()) {
             StatusBarUtil.setTranslucent(this);
+            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                    | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
         }
         ARouter.getInstance().inject(this);
         ActivityManager.getInstance().addActivity(this);

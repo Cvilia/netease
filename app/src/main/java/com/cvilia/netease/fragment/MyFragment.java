@@ -23,12 +23,10 @@ public class MyFragment extends BaseFragment<MyPresenter> implements MyContact.V
     @Override
     protected void onViewCreated() {
         Log.e("fragment", "我的");
-        mBinding.outlineInfo.setOnClickListener(this);
     }
 
     @Override
     protected void initWidgetEvent() {
-        mBinding.localLl.setOnClickListener(this);
     }
 
     @Override
@@ -58,15 +56,5 @@ public class MyFragment extends BaseFragment<MyPresenter> implements MyContact.V
     }
 
     @Override
-    public void onClick(View view) {
-        int id = view.getId();
-        if (id == R.id.outlineInfo) {
-            ToastUtil.showShort("个人主页");
-        } else if (id == R.id.localLl) {
-            ARouter.getInstance().build(PageUrlConfig.LOCAL_MUSIC_ACTIVITY).navigation();
-        } else if (id == R.id.favoriteLl) {
-
-        } else if (id == R.id.playRecentLl) {
-        }
-    }
+    public void onClick(View view) {}
 }

@@ -22,7 +22,6 @@
         android:supportsRtl="true"
         android:theme="@style/FullScreenTheme"
         tools:targetApi="n">
-        <activity android:name=".activity.discovery.RecommendPerDayActivity"/>
 
         <service
             android:name=".service.MediaPLayerService"

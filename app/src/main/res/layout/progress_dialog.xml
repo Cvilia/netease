@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="@dimen/dp_240"
     android:layout_height="wrap_content"
-    android:background="@drawable/permission_dialog"
+    android:background="@drawable/dialog_common_white_soild_radius_15_background"
     android:gravity="center"
     android:minHeight="@dimen/dp_130">
 

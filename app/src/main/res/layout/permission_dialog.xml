@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="240dp"
     android:layout_height="wrap_content"
-    android:background="@drawable/permission_dialog"
+    android:background="@drawable/dialog_common_white_soild_radius_15_background"
     android:paddingTop="16dp">
 
     <TextView
@@ -36,14 +36,14 @@
         <TextView
             android:id="@+id/rejectTv"
             style="@style/DialogButton"
-            android:background="@drawable/dialog_left"
+            android:background="@drawable/dialog_common_left_button_ackground"
             android:text="@string/reject"
             android:textColor="@color/app_main" />
 
         <TextView
             android:id="@+id/authorizationTv"
             style="@style/DialogButton"
-            android:background="@drawable/dialog_right"
+            android:background="@drawable/dialog_common_right_button_ackground"
             android:text="@string/authorization"
             android:textColor="@color/white" />
 

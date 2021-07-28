@@ -54,7 +54,7 @@
         android:layout_height="@dimen/dp_40"
         android:layout_marginHorizontal="@dimen/dp_20"
         android:layout_marginTop="@dimen/dp_30"
-        android:background="@drawable/normal_red_round"
+        android:background="@drawable/common_main_red_soild_radius_30_background"
         android:text="@string/login"
         android:textColor="@color/white"
         android:textSize="16sp" />
