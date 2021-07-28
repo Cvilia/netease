@@ -6,7 +6,7 @@ import com.alibaba.android.arouter.launcher.ARouter;
 import com.cvilia.netease.adapter.DiscoveryBannerAdapter;
 import com.cvilia.netease.config.PageUrlConfig;
 import com.cvilia.netease.databinding.FragmentDiscoverLayoutBinding;
-import com.cvilia.netease.entity.BannerEntity.BannersBean;
+import com.cvilia.netease.bean.BannerEntity.BannersBean;
 import com.cvilia.netease.framework.BaseFragment;
 import com.cvilia.netease.mvp.c.DiscoverContact;
 import com.cvilia.netease.mvp.p.DiscoveryPresenter;
@@ -23,8 +23,6 @@ import java.util.List;
  */
 public class DiscoverFragment extends BaseFragment<DiscoveryPresenter> implements DiscoverContact.View {
 
-//    private static final String TAG = DiscoverFragment.class.getSimpleName();
-
     private FragmentDiscoverLayoutBinding mViewBind;
 
     @Override
@@ -34,9 +32,6 @@ public class DiscoverFragment extends BaseFragment<DiscoveryPresenter> implement
 
     @Override
     protected void initWidgetEvent() {
-        mViewBind.discoverySecondModule.recommendRoot.setOnClickListener(v -> ARouter.getInstance().build(PageUrlConfig.RECOMMEND_PER_DAY).navigation());
-        int day = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
-        mViewBind.discoverySecondModule.dayNum.setText(String.valueOf(day));
     }
 
     @Override
@@ -59,10 +54,6 @@ public class DiscoverFragment extends BaseFragment<DiscoveryPresenter> implement
     @SuppressWarnings("unchecked")
     @Override
     public void getBannerSuccess(List<BannersBean> banners) {
-        mViewBind.bannerView
-                .addBannerLifecycleObserver(this)
-                .setAdapter(new DiscoveryBannerAdapter(banners, getActivity()))
-                .setIndicator(new CircleIndicator(getActivity()));
     }
 
     @Override

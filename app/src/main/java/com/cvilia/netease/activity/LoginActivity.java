@@ -1,6 +1,5 @@
 package com.cvilia.netease.activity;
 
-import android.os.Bundle;
 import android.text.InputType;
 import android.text.TextUtils;
 import android.view.View;
@@ -11,13 +10,13 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.facade.callback.NavCallback;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.cvilia.netease.R;
-import com.cvilia.netease.mvp.c.LoginContact;
-import com.cvilia.netease.bean.User;
+import com.cvilia.netease.bean.login.UserLoginBean;
 import com.cvilia.netease.component.ProgressDialog;
 import com.cvilia.netease.config.Constants;
 import com.cvilia.netease.config.PageUrlConfig;
 import com.cvilia.netease.databinding.ActivityLoginBinding;
 import com.cvilia.netease.framework.BaseActivity;
+import com.cvilia.netease.mvp.c.LoginContact;
 import com.cvilia.netease.mvp.p.LoginPresenter;
 import com.cvilia.netease.sp.MMKVUtil;
 import com.cvilia.netease.utils.Md5;
@@ -33,11 +32,6 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
     int loginType;//1 = 手机登录 2 = 邮箱登录
 
     private ActivityLoginBinding mViewBind;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
 
     @Override
     protected void initWidgetEvent() {
@@ -73,9 +67,9 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
 
 
     @Override
-    public void loginSuccess(User user) {
+    public void loginSuccess(UserLoginBean user) {
         dialog.dismiss();
-        MMKVUtil.saveString(Constants.USER_ID, user.getAccount().getId() + "");
+        MMKVUtil.saveString(Constants.USER_ID, user.getAccount().getId());
         MMKVUtil.saveString(Constants.USER_NAME, user.getAccount().getUserName());
         MMKVUtil.saveString(Constants.USER_NICK_NAME, user.getProfile().getNickname());
         MMKVUtil.saveString(Constants.USER_TOKEN, user.getToken());

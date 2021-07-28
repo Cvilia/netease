@@ -4,8 +4,8 @@ import android.util.Log;
 
 import com.cvilia.netease.NeteaseApplication;
 import com.cvilia.netease.config.Constants;
+import com.cvilia.netease.bean.login.UserLoginBean;
 import com.cvilia.netease.mvp.c.LoginContact;
-import com.cvilia.netease.bean.User;
 import com.cvilia.netease.framework.BasePresenter;
 import com.cvilia.netease.net.NetSubscribe;
 import com.cvilia.netease.net.RetrofitUtils;
@@ -28,12 +28,11 @@ public class LoginPresenter extends BasePresenter<LoginContact.View> implements 
                 .loginByEmail(email, password)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new NetSubscribe<User>() {
+                .subscribe(new NetSubscribe<UserLoginBean>() {
                     @Override
-                    public void onNext(@NonNull User user) {
+                    public void onNext(@NonNull UserLoginBean user) {
                         saveLoginInfo(false, email, password, user.getCookie());
                         mView.loginSuccess(user);
-                        NeteaseApplication.app.setUser(user);
                     }
 
                     @Override
@@ -51,12 +50,11 @@ public class LoginPresenter extends BasePresenter<LoginContact.View> implements 
                 .loginByPhone(phone, password)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new NetSubscribe<User>() {
+                .subscribe(new NetSubscribe<UserLoginBean>() {
                     @Override
-                    public void onNext(@NonNull User user) {
+                    public void onNext(@NonNull UserLoginBean user) {
                         saveLoginInfo(true, phone, password, user.getCookie());
                         mView.loginSuccess(user);
-                        NeteaseApplication.app.setUser(user);
                     }
 
                     @Override

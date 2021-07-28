@@ -13,7 +13,7 @@ import com.cvilia.netease.R;
 import com.cvilia.netease.adapter.RecommendSongsPerDayAdapter;
 import com.cvilia.netease.config.PageUrlConfig;
 import com.cvilia.netease.databinding.ActivityRecommendPerdayBinding;
-import com.cvilia.netease.entity.DayRecommendEntity;
+import com.cvilia.netease.bean.DayRecommendEntity;
 import com.cvilia.netease.framework.BaseActivity;
 import com.cvilia.netease.mvp.c.RecommendPerDayContact;
 import com.cvilia.netease.mvp.p.RecommendPerDayPresenter;

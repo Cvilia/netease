@@ -84,19 +84,19 @@ public class ImgUtils {
      * @param context
      * @param requestCode
      */
-    public static void selectLocalImg(Activity context, int requestCode) {
-        Matisse.from(context)
-                .choose(MimeType.of(MimeType.JPEG, MimeType.PNG, MimeType.GIF))
-                .countable(true)
-                .maxSelectable(1)
-                .gridExpectedSize(context.getResources().getDimensionPixelSize(R.dimen.grid_expected_size))
-                .restrictOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED)
-                .thumbnailScale(0.8f)
-                .originalEnable(true)
-                .maxOriginalSize(2)
-                .imageEngine(new PicassoEngine())
-                .forResult(requestCode);
-    }
+//    public static void selectLocalImg(Activity context, int requestCode) {
+//        Matisse.from(context)
+//                .choose(MimeType.of(MimeType.JPEG, MimeType.PNG, MimeType.GIF))
+//                .countable(true)
+//                .maxSelectable(1)
+//                .gridExpectedSize(context.getResources().getDimensionPixelSize(R.dimen.grid_expected_size))
+//                .restrictOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED)
+//                .thumbnailScale(0.8f)
+//                .originalEnable(true)
+//                .maxOriginalSize(2)
+//                .imageEngine(new PicassoEngine())
+//                .forResult(requestCode);
+//    }
 
 
 }

@@ -39,7 +39,7 @@ import io.reactivex.rxjava3.core.Observable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 import me.jessyan.autosize.internal.CustomAdapt;
 
-public class LauncherActivity extends AppCompatActivity implements CustomAdapt, View.OnClickListener {
+public class LauncherActivity extends AppCompatActivity implements View.OnClickListener {
 
     private static final String TAG = LauncherActivity.class.getSimpleName();
     private ActivityLauncherBinding mViewBind;
@@ -159,16 +159,6 @@ public class LauncherActivity extends AppCompatActivity implements CustomAdapt, 
     }
 
     @Override
-    public boolean isBaseOnWidth() {
-        return true;
-    }
-
-    @Override
-    public float getSizeInDp() {
-        return 360;
-    }
-
-    @Override
     public void onClick(View v) {
         if (!mViewBind.checkBox.isChecked()) {
             final Animation animation = AnimationUtils.loadAnimation(this, R.anim.shake);
@@ -190,7 +180,7 @@ public class LauncherActivity extends AppCompatActivity implements CustomAdapt, 
         }
     }
 
-    private class MyClickSpan extends ClickableSpan {
+    private static class MyClickSpan extends ClickableSpan {
         //1 = 用户协议  2 = 隐私政策 3 = 儿童隐私协议
         private final int tag;
 

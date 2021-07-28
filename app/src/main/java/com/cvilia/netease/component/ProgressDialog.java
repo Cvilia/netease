@@ -19,7 +19,6 @@ import com.cvilia.netease.utils.DimenUtil;
  */
 public class ProgressDialog extends Dialog {
 
-    private ProgressDialogBinding mViewBind;
     private final Context context;
 
     public ProgressDialog(@NonNull Context context) {
@@ -30,7 +29,7 @@ public class ProgressDialog extends Dialog {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mViewBind = ProgressDialogBinding.inflate(getLayoutInflater());
+        ProgressDialogBinding mViewBind = ProgressDialogBinding.inflate(getLayoutInflater());
         setContentView(mViewBind.getRoot());
         setCancelable(false);
         setCanceledOnTouchOutside(false);

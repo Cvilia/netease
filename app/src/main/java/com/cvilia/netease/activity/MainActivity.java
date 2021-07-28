@@ -1,10 +1,12 @@
 package com.cvilia.netease.activity;
 
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.core.view.GravityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentPagerAdapter;
@@ -12,6 +14,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.cvilia.netease.R;
+import com.cvilia.netease.adapter.MainPagerAdapter;
 import com.cvilia.netease.adapter.ViewPagerAdapter;
 import com.cvilia.netease.config.PageUrlConfig;
 import com.cvilia.netease.mvp.c.MainContact;
@@ -22,6 +25,10 @@ import com.cvilia.netease.fragment.MyFragment;
 import com.cvilia.netease.framework.BaseActivity;
 import com.cvilia.netease.mvp.p.MainPresenter;
 import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
+import com.jaeger.library.StatusBarUtil;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +38,7 @@ import java.util.Objects;
  * 首页
  */
 @Route(path = PageUrlConfig.MAIN_PAGE)
-public class MainActivity extends BaseActivity<MainPresenter> implements MainContact.View, ViewPager.OnPageChangeListener,
+public class MainActivity extends BaseActivity<MainPresenter> implements MainContact.View,
         TabLayout.OnTabSelectedListener, View.OnClickListener {
 
     private ActivityMainBinding mBinding;
@@ -40,9 +47,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
 
 
     @Override
-    protected void onViewCreated() {
-//        mPresenter.refreshLogin();
-    }
+    protected void onViewCreated() {}
 
     @Override
     protected View getRootView() {
@@ -53,38 +58,18 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
 
     @Override
     protected void initWidgetEvent() {
-        mBinding.actionbar.actionLeft.setOnClickListener(v -> mBinding.rootDrawer.openDrawer(GravityCompat.START));
     }
 
     @Override
     protected void initData() {
-        mBinding.viewPager.addOnPageChangeListener(this);
         mBinding.viewPager.setCurrentItem(0);
-        List<Fragment> mFragments = new ArrayList<>();
-        mFragments.add(new DiscoverFragment());
-        mFragments.add(new CloudFragment());
-        mFragments.add(new MyFragment());
-        ViewPagerAdapter mAdapter = new ViewPagerAdapter(mFragments, getSupportFragmentManager(),
-                FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
-        mBinding.viewPager.setAdapter(mAdapter);
-        mBinding.viewPager.setOffscreenPageLimit(mFragments.size());
-        mBinding.tabLayout.setupWithViewPager(mBinding.viewPager);
-        for (int i = 0; i < mFragments.size(); i++) {
-            TabLayout.Tab tab = mBinding.tabLayout.getTabAt(i);
-            if (tab != null) {
-                tab.setCustomView(getTabView(i));
+        mBinding.viewPager.setAdapter(new MainPagerAdapter(this));
+        new TabLayoutMediator(mBinding.tabLayout, mBinding.viewPager, true, new TabLayoutMediator.TabConfigurationStrategy() {
+            @Override
+            public void onConfigureTab(@NonNull @NotNull TabLayout.Tab tab, int position) {
+                tab.setText(tabTitles[position]);
             }
-        }
-        mBinding.tabLayout.addOnTabSelectedListener(this);
-    }
-
-    private View getTabView(int index) {
-        View view = LayoutInflater.from(this).inflate(R.layout.tab_item, null);
-        TextView title = view.findViewById(R.id.tabTitle);
-        title.setText(tabTitles[index]);
-        ImageView img = view.findViewById(R.id.tabImg);
-        img.setImageResource(tabImgs[index]);
-        return view;
+        }).attach();
     }
 
     @Override
@@ -109,22 +94,6 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
 
     @Override
     public void dismissLoading() {
-
-    }
-
-    /*******************************************OnPageChangeListener********************************/
-    @Override
-    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-    }
-
-    @Override
-    public void onPageSelected(int position) {
-        Objects.requireNonNull(mBinding.tabLayout.getTabAt(position)).select();
-    }
-
-    @Override
-    public void onPageScrollStateChanged(int state) {
 
     }
 

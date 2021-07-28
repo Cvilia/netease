@@ -1,6 +1,6 @@
 package com.cvilia.netease.mvp.c;
 
-import com.cvilia.netease.bean.User;
+import com.cvilia.netease.bean.login.UserLoginBean;
 import com.cvilia.netease.framework.IPresenter;
 import com.cvilia.netease.framework.IView;
 
@@ -18,7 +18,7 @@ public class LoginContact {
     }
 
     public interface View extends IView {
-        void loginSuccess(User user);
+        void loginSuccess(UserLoginBean user);
 
         void loginFailed();
     }

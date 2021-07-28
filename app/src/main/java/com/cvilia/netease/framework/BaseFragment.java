@@ -22,7 +22,7 @@ import me.jessyan.autosize.internal.CustomAdapt;
  * date: 2020/10/20
  * describe：描述
  */
-public abstract class BaseFragment<T extends BasePresenter> extends Fragment implements CustomAdapt, IView {
+public abstract class BaseFragment<T extends BasePresenter> extends Fragment implements IView {
 
     protected T mPresenter;
     protected Context mContext;
@@ -82,16 +82,6 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment imp
     @Override
     public void dismissLoading() {
 
-    }
-
-    @Override
-    public boolean isBaseOnWidth() {
-        return true;
-    }
-
-    @Override
-    public float getSizeInDp() {
-        return 360;
     }
 
     @Override

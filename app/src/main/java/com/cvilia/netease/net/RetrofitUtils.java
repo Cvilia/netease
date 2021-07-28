@@ -3,10 +3,10 @@ package com.cvilia.netease.net;
 import android.util.Log;
 
 import com.cvilia.netease.NeteaseApplication;
-import com.cvilia.netease.bean.User;
-import com.cvilia.netease.entity.BannerEntity;
-import com.cvilia.netease.entity.DayRecommendEntity;
-import com.cvilia.netease.entity.RefreshLoginEntity;
+import com.cvilia.netease.bean.BannerEntity;
+import com.cvilia.netease.bean.DayRecommendEntity;
+import com.cvilia.netease.bean.RefreshLoginEntity;
+import com.cvilia.netease.bean.login.UserLoginBean;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -77,12 +77,7 @@ public class RetrofitUtils {
     /**
      * 日志信息
      */
-    static HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor(new HttpLoggingInterceptor.Logger() {
-        @Override
-        public void log(@NotNull String s) {
-            Log.e(TAG, "HttpLoggingInterceptor=" + s);
-        }
-    });
+    static HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor(s -> Log.e(TAG, "HttpLoggingInterceptor=" + s));
 
     /**
      * 设置头信息
@@ -103,7 +98,7 @@ public class RetrofitUtils {
      */
     public static final String CACHE_NAME = "retrofit_cache";
     static File cacheFile = new File(NeteaseApplication.app.getExternalCacheDir(), CACHE_NAME);
-    static Cache cache = new Cache(cacheFile, 1024 * 1024 * 50);
+    static Cache cache = new Cache(cacheFile, 52428800L);
     static Interceptor cacheInterceptor = new Interceptor() {
         @NotNull
         @Override
@@ -136,11 +131,11 @@ public class RetrofitUtils {
     };
 
 
-    public Observable<User> loginByPhone(String phone, String password) {
+    public Observable<UserLoginBean> loginByPhone(String phone, String password) {
         return api.loginByPhone(phone, password);
     }
 
-    public Observable<User> loginByEmail(String email, String password) {
+    public Observable<UserLoginBean> loginByEmail(String email, String password) {
         return api.loginByEmail(email, password);
     }
 

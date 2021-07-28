@@ -25,20 +25,4 @@
         app:layout_constraintTop_toBottomOf="@id/actionbar"
         app:layout_constraintVertical_weight="1" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatButton"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="300dp"
-        android:src="@drawable/icon_pitch"
-        app:backgroundTint="@color/app_transparent"
-        app:borderWidth="0dp"
-        app:elevation="0dp"
-        app:fabSize="mini"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:pressedTranslationZ="0dp"
-        app:rippleColor="@color/app_main" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
