@@ -37,13 +37,16 @@ public class MainPresenter extends BasePresenter<MainContact.View> implements Ma
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(new NetSubscribe<UserLoginBean>() {
                         @Override
-                        public void onNext(@NonNull UserLoginBean user) {}
+                        public void onSuccess(UserLoginBean userLoginBean) {
+
+                        }
 
                         @Override
-                        public void onError(@NonNull Throwable e) {
+                        public void onFailed(Throwable e) {
                             super.onError(e);
                             Log.e("MainPresenter", "onError loginByEmail=" + e.toString());
                         }
+
                     });
         } else {
             RetrofitUtils.getInstance()
@@ -55,8 +58,12 @@ public class MainPresenter extends BasePresenter<MainContact.View> implements Ma
                         public void onNext(@NonNull UserLoginBean user) {}
 
                         @Override
-                        public void onError(@NonNull Throwable e) {
-                            super.onError(e);
+                        public void onSuccess(UserLoginBean userLoginBean) {
+
+                        }
+
+                        @Override
+                        public void onFailed(Throwable e) {
                             Log.e("MainPresenter", "onError loginByEmail=" + e.toString());
                         }
                     });

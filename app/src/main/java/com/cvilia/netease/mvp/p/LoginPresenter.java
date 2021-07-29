@@ -29,16 +29,17 @@ public class LoginPresenter extends BasePresenter<LoginContact.View> implements 
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new NetSubscribe<UserLoginBean>() {
+
                     @Override
-                    public void onNext(@NonNull UserLoginBean user) {
-                        saveLoginInfo(false, email, password, user.getCookie());
-                        mView.loginSuccess(user);
+                    public void onSuccess(UserLoginBean userLoginBean) {
+                        saveLoginInfo(false, email, password, userLoginBean.getCookie());
+                        mView.loginSuccess(userLoginBean);
                     }
 
                     @Override
-                    public void onError(@NonNull Throwable e) {
-                        super.onError(e);
-                        Log.e("LoginPresenter", "onError loginByEmail=" + e.toString());
+                    public void onFailed(Throwable throwable) {
+                        super.onError(throwable);
+                        Log.e("LoginPresenter", "onError loginByEmail=" + throwable.toString());
                         mView.loginFailed();
                     }
                 });
@@ -51,16 +52,16 @@ public class LoginPresenter extends BasePresenter<LoginContact.View> implements 
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new NetSubscribe<UserLoginBean>() {
+
                     @Override
-                    public void onNext(@NonNull UserLoginBean user) {
-                        saveLoginInfo(true, phone, password, user.getCookie());
-                        mView.loginSuccess(user);
+                    public void onSuccess(UserLoginBean userLoginBean) {
+                        saveLoginInfo(true, phone, password, userLoginBean.getCookie());
+                        mView.loginSuccess(userLoginBean);
                     }
 
                     @Override
-                    public void onError(@NonNull Throwable e) {
-                        super.onError(e);
-                        Log.e("LoginPresenter", "onError loginByEmail=" + e.toString());
+                    public void onFailed(Throwable throwable) {
+                        Log.e("LoginPresenter", "onError loginByEmail=" + throwable.toString());
                         mView.loginFailed();
                     }
                 });

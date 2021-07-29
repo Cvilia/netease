@@ -19,8 +19,6 @@ public class LocalMusicPresenter extends BasePresenter<LocalMusicContact.View> i
     @Override
     public void scanLocalMusic() {
         List<LocalMusic> musics = ScanMusicUtil.getMusicData((Activity) mView);
-        if (musics != null) {
-            mView.scanLocalMusicSuccess(musics);
-        }
+        mView.scanLocalMusicSuccess(musics);
     }
 }

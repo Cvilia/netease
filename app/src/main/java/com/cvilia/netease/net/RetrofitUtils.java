@@ -1,12 +1,16 @@
 package com.cvilia.netease.net;
 
+import android.text.TextUtils;
 import android.util.Log;
 
 import com.cvilia.netease.NeteaseApplication;
 import com.cvilia.netease.bean.BannerEntity;
 import com.cvilia.netease.bean.DayRecommendEntity;
 import com.cvilia.netease.bean.RefreshLoginEntity;
+import com.cvilia.netease.bean.TiktokBean;
 import com.cvilia.netease.bean.login.UserLoginBean;
+import com.cvilia.netease.config.Constants;
+import com.cvilia.netease.sp.MMKVUtil;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -38,7 +42,6 @@ public class RetrofitUtils {
     private static final int WAIT_TIME = 30;//读取时间
 
     private final ApiService api;
-    private static OkHttpClient okHttpClient;
     private static RetrofitUtils instance;
 
 
@@ -54,14 +57,18 @@ public class RetrofitUtils {
 
     public static RetrofitUtils getInstance() {
         if (instance == null) {
-            instance = new RetrofitUtils(initOkHttpClient());
+            synchronized (RetrofitUtils.class) {
+                if (instance == null) {
+                    instance = new RetrofitUtils(initOkHttpClient());
+                }
+            }
         }
         return instance;
     }
 
     private static OkHttpClient initOkHttpClient() {
 
-        okHttpClient = new OkHttpClient.Builder()
+        OkHttpClient okHttpClient = new OkHttpClient.Builder()
                 .connectTimeout(CONNECT_TIME, TimeUnit.SECONDS)
                 .readTimeout(WAIT_TIME, TimeUnit.SECONDS)
                 .writeTimeout(WAIT_TIME, TimeUnit.SECONDS)
@@ -88,6 +95,10 @@ public class RetrofitUtils {
                 .addHeader("Accept", "application/json")
                 .addHeader("Content-Type", "text/plain; charset=utf-8")
                 .method(originRequest.method(), originRequest.body());
+        String cookie = MMKVUtil.getString(Constants.USER_COOKIE);
+        if (!TextUtils.isEmpty(cookie)) {
+            builder.addHeader("cookie", cookie);
+        }
         Request request = builder.build();
         return chain.proceed(request);
     };
@@ -139,13 +150,14 @@ public class RetrofitUtils {
         return api.loginByEmail(email, password);
     }
 
-    public Observable<BannerEntity> getBanners() {
-        return api.getBanners();
+    public Observable<TiktokBean> getRecommendVideos(int offset) {
+        return api.getRecommendVideos(offset);
     }
 
-    public Observable<DayRecommendEntity> getRecommendSongs(String cookie) {
-        return api.getRecommendSongs(cookie);
+    public Observable<DayRecommendEntity> getRecommendSongs() {
+        return api.getRecommendSongs();
     }
+
     public Observable<RefreshLoginEntity> refreshLogin() {
         return api.refreshLogin();
     }

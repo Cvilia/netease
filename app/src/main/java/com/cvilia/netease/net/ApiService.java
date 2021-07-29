@@ -3,6 +3,7 @@ package com.cvilia.netease.net;
 import com.cvilia.netease.bean.BannerEntity;
 import com.cvilia.netease.bean.DayRecommendEntity;
 import com.cvilia.netease.bean.RefreshLoginEntity;
+import com.cvilia.netease.bean.TiktokBean;
 import com.cvilia.netease.bean.login.UserLoginBean;
 
 import io.reactivex.rxjava3.core.Observable;
@@ -54,6 +55,14 @@ public interface ApiService {
     Observable<BannerEntity> getBanners();
 
     @GET("/recommend/songs")
-    Observable<DayRecommendEntity> getRecommendSongs(@Query("cookie")String cookie);
+    Observable<DayRecommendEntity> getRecommendSongs();
+
+    /**
+     * 获取推荐视频
+     * @param offset 分页index
+     * @return 推荐视频
+     */
+    @GET("/video/timeline/recommend")
+    Observable<TiktokBean> getRecommendVideos(@Query("offset") int offset);
 
 }

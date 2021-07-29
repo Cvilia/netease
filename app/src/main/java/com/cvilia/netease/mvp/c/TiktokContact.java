@@ -1,5 +1,6 @@
 package com.cvilia.netease.mvp.c;
 
+import com.cvilia.netease.bean.TiktokBean;
 import com.cvilia.netease.framework.IPresenter;
 import com.cvilia.netease.framework.IView;
 
@@ -13,20 +14,15 @@ import static com.cvilia.netease.bean.BannerEntity.BannersBean;
  * date: 2021-04-02-4:56 PM
  * describe：描述
  */
-public class DiscoverContact {
+public class TiktokContact {
 
     public interface Presenter extends IPresenter<View> {
-        void getBanners();
+        void getRecommendVideo(int offset);
     }
 
     public interface View extends IView {
-        void getBannerSuccess(List<BannersBean> bean);
-
-        void getBannerFail();
-
-        void loadingSuccess();
-
-        void loadingFailed();
+        void showSuccess(TiktokBean bean);
+        void showFailed();
     }
 
 }

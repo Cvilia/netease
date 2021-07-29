@@ -30,8 +30,17 @@ public abstract class NetSubscribe<T> implements Observer<T> {
     }
 
     @Override
+    public void onNext(@NonNull T t) {
+        onSuccess(t);
+    }
+
+    public abstract void onSuccess(T t);
+
+    public abstract void onFailed(Throwable throwable);
+
+    @Override
     public void onComplete() {
-        Log.e(TAG, "onComplete");
+
     }
 
     @Override
@@ -49,5 +58,6 @@ public abstract class NetSubscribe<T> implements Observer<T> {
         Log.e(TAG, "onError msg = ");
         e.printStackTrace();
         ToastUtil.showShort(errMsg);
+        onFailed(e);
     }
 }

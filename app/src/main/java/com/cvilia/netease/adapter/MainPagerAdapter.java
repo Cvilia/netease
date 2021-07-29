@@ -8,7 +8,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import com.cvilia.netease.activity.MainActivity;
 import com.cvilia.netease.fragment.CloudFragment;
-import com.cvilia.netease.fragment.DiscoverFragment;
+import com.cvilia.netease.fragment.TiktokFragment;
 import com.cvilia.netease.fragment.MyFragment;
 
 import org.jetbrains.annotations.NotNull;
@@ -36,7 +36,7 @@ public class MainPagerAdapter extends FragmentStateAdapter {
     public Fragment createFragment(int position) {
         switch (position) {
             case 0:
-                return new DiscoverFragment();
+                return new TiktokFragment();
             case 1:
                 return new CloudFragment();
             case 2:
