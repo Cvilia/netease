@@ -46,7 +46,6 @@ public class DiscoverFragment extends BaseFragment<DiscoveryPresenter> implement
     }
 
 
-    @SuppressWarnings("unchecked")
     @Override
     public void getBannerSuccess(List<BannersBean> banners) {
     }

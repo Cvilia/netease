@@ -18,7 +18,7 @@ import com.jaeger.library.StatusBarUtil;
 
 import org.greenrobot.eventbus.EventBus;
 
-import me.jessyan.autosize.internal.CustomAdapt;
+
 
 /**
  * author: lzy

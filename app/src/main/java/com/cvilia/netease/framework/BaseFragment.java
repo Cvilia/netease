@@ -15,7 +15,6 @@ import com.alibaba.android.arouter.launcher.ARouter;
 
 import org.greenrobot.eventbus.EventBus;
 
-import me.jessyan.autosize.internal.CustomAdapt;
 
 /**
  * author: lzy

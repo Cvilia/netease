@@ -37,7 +37,7 @@ import java.util.concurrent.TimeUnit;
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.core.Observable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
-import me.jessyan.autosize.internal.CustomAdapt;
+
 
 public class LauncherActivity extends AppCompatActivity implements View.OnClickListener {
 

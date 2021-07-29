@@ -48,6 +48,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
     protected void initData() {
         mBinding.viewPager.setCurrentItem(0);
         mBinding.viewPager.setAdapter(new MainPagerAdapter(this));
+        mBinding.tabLayout.addOnTabSelectedListener(this);
         new TabLayoutMediator(mBinding.tabLayout, mBinding.viewPager, true, (tab, position) -> tab.setText(tabTitles[position])).attach();
     }
 
