@@ -17,6 +17,7 @@ import com.cvilia.netease.framework.BaseFragment;
 import com.cvilia.netease.mvp.c.TiktokContact;
 import com.cvilia.netease.mvp.p.TiktokPresenter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -64,7 +65,9 @@ public class TiktokFragment extends BaseFragment<TiktokPresenter> implements Tik
     @Override
     public void showSuccess(TiktokBean bean) {
         if (bean!=null&&bean.getVideoDatas()!=null&&!bean.getVideoDatas().isEmpty()){
-            mAdapter = new TiktokAdapter(bean.getVideoDatas());
+            List<TiktokBean.VideoDatasBean> list = new ArrayList<>();
+            list.add(bean.getVideoDatas().get(0));
+            mAdapter = new TiktokAdapter(list,getActivity());
             mViewBind.tiktokRecyclerView.setAdapter(mAdapter);
         }
     }

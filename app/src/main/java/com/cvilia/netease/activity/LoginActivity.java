@@ -69,10 +69,6 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
     @Override
     public void loginSuccess(UserLoginBean user) {
         dialog.dismiss();
-        MMKVUtil.saveString(Constants.USER_ID, user.getAccount().getId());
-        MMKVUtil.saveString(Constants.USER_NAME, user.getAccount().getUserName());
-        MMKVUtil.saveString(Constants.USER_NICK_NAME, user.getProfile().getNickname());
-        MMKVUtil.saveString(Constants.USER_TOKEN, user.getToken());
         ARouter.getInstance().build(PageUrlConfig.MAIN_PAGE).navigation(this, new NavCallback() {
             @Override
             public void onArrival(Postcard postcard) {

@@ -2,7 +2,6 @@ package com.cvilia.netease.mvp.p;
 
 import android.util.Log;
 
-import com.cvilia.netease.NeteaseApplication;
 import com.cvilia.netease.config.Constants;
 import com.cvilia.netease.bean.login.UserLoginBean;
 import com.cvilia.netease.mvp.c.LoginContact;
@@ -12,7 +11,6 @@ import com.cvilia.netease.net.RetrofitUtils;
 import com.cvilia.netease.sp.MMKVUtil;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
-import io.reactivex.rxjava3.annotations.NonNull;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 
 /**
@@ -32,7 +30,7 @@ public class LoginPresenter extends BasePresenter<LoginContact.View> implements 
 
                     @Override
                     public void onSuccess(UserLoginBean userLoginBean) {
-                        saveLoginInfo(false, email, password, userLoginBean.getCookie());
+                        saveLoginInfo(false, email, password, userLoginBean.getCookie(),userLoginBean);
                         mView.loginSuccess(userLoginBean);
                     }
 
@@ -55,7 +53,7 @@ public class LoginPresenter extends BasePresenter<LoginContact.View> implements 
 
                     @Override
                     public void onSuccess(UserLoginBean userLoginBean) {
-                        saveLoginInfo(true, phone, password, userLoginBean.getCookie());
+                        saveLoginInfo(true, phone, password, userLoginBean.getCookie(), userLoginBean);
                         mView.loginSuccess(userLoginBean);
                     }
 
@@ -67,11 +65,15 @@ public class LoginPresenter extends BasePresenter<LoginContact.View> implements 
                 });
     }
 
-    private void saveLoginInfo(boolean isPhone, String account, String password, String cookie) {
+    private void saveLoginInfo(boolean isPhone, String account, String password, String cookie, UserLoginBean user) {
         MMKVUtil.saveBool(Constants.LOGIN_TYPE, isPhone);
         MMKVUtil.saveString(Constants.LOGIN_ACCOUNT, account);
         MMKVUtil.saveString(Constants.LOGIN_PASSWORD, password);
         MMKVUtil.saveString(Constants.USER_COOKIE, cookie);
+        MMKVUtil.saveString(Constants.USER_ID, user.getAccount().getId());
+        MMKVUtil.saveString(Constants.USER_NAME, user.getAccount().getUserName());
+        MMKVUtil.saveString(Constants.USER_NICK_NAME, user.getProfile().getNickname());
+        MMKVUtil.saveString(Constants.USER_TOKEN, user.getToken());
     }
 
 }
