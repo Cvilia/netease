@@ -39,12 +39,10 @@ public class TiktokAdapter extends BaseQuickAdapter<VideoDatasBean, TiktokAdapte
 
     @Override
     protected void convert(@NotNull TiktokViewHolder holder, VideoDatasBean bean) {
-        SimpleExoPlayer player = new SimpleExoPlayer.Builder(weak.get()).build();
-        holder.playerView.setPlayer(player);
-        MediaItem mediaItem = MediaItem.fromUri(Uri.parse(bean.getData().getUrlInfo().getUrl()));
-        player.addMediaItem(mediaItem);
-        player.prepare();
-        player.play();
+        holder.playerView.setPlayer(SingleExoplayer.getInstance(weak.get()).player);
+        SingleExoplayer.getInstance(weak.get()).setVideoUri(bean.getData().getUrlInfo().getUrl());
+        SingleExoplayer.getInstance(weak.get()).player.prepare();
+        SingleExoplayer.getInstance(weak.get()).player.play();
     }
 
     static class TiktokViewHolder extends BaseViewHolder {

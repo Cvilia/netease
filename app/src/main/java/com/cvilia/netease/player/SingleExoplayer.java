@@ -1,8 +1,12 @@
 package com.cvilia.netease.player;
 
 import android.content.Context;
+import android.net.Uri;
 
+import com.google.android.exoplayer2.MediaItem;
 import com.google.android.exoplayer2.SimpleExoPlayer;
+
+import java.lang.ref.WeakReference;
 
 /**
  * author: v_lizhenyu
@@ -13,17 +17,22 @@ import com.google.android.exoplayer2.SimpleExoPlayer;
 public class SingleExoplayer {
 
     public SimpleExoPlayer player;
-    private static Context context;
+    private static WeakReference<Context> weak;
 
     private static class Singleton{
         private static final SingleExoplayer instance = new SingleExoplayer();
     }
     private SingleExoplayer(){
-        player = new SimpleExoPlayer.Builder(context).build();
+        player = new SimpleExoPlayer.Builder(weak.get()).build();
     }
     public static SingleExoplayer getInstance(Context ctx){
-        context = ctx;
+        weak = new WeakReference<>(ctx);
         return  Singleton.instance;
+    }
+
+    public void setVideoUri(String videUrl){
+        MediaItem mediaItem = MediaItem.fromUri(Uri.parse(videUrl));
+        player.addMediaItem(mediaItem);
     }
 
 }
